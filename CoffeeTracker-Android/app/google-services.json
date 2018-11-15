@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1021865785684",
+    "firebase_url": "https://coffeetracker-de79d.firebaseio.com",
+    "project_id": "coffeetracker-de79d",
+    "storage_bucket": "coffeetracker-de79d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021865785684:android:142406c9519e6bee",
+        "android_client_info": {
+          "package_name": "ro.fmi.ip.trei.coffeetracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1021865785684-7vjca9latrcchpttff8lohpbud3c0ntf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ro.fmi.ip.trei.coffeetracker",
+            "certificate_hash": "8d920ac9afeba394fac05eea7af405a1d99e9922"
+          }
+        },
+        {
+          "client_id": "1021865785684-kbv5hd5qb7j0aq9h77mcnulhsi9n0gbe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJIS4KRiuhFdXCVJHEMqjyqAbv0qmSKJg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021865785684-kbv5hd5qb7j0aq9h77mcnulhsi9n0gbe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
