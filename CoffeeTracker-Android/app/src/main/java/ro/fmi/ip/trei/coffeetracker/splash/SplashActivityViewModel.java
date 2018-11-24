@@ -1,19 +1,13 @@
 package ro.fmi.ip.trei.coffeetracker.splash;
 
-import android.arch.lifecycle.ViewModel;
-
 import com.google.firebase.auth.FirebaseAuth;
 
-import ro.fmi.ip.trei.coffeetracker.util.SingleLiveEvent;
+import ro.fmi.ip.trei.coffeetracker.common.BaseViewModel;
 
-public class SplashActivityViewModel extends ViewModel {
+public class SplashActivityViewModel extends BaseViewModel {
 
-    public static final int SCREEN_ID_MAIN = 10;
-    public static final int SCREEN_ID_ENTRY = 11;
-
-
-
-    public final SingleLiveEvent<Integer> nextScreenEvent = new SingleLiveEvent<>();
+    public static final int SCREEN_MAIN = 1;
+    public static final int SCREEN_ENTRY = 2;
 
 
 
@@ -27,9 +21,9 @@ public class SplashActivityViewModel extends ViewModel {
 
     public void checkLoginAndAdvance() {
         if (userIsLoggedIn()) {
-            nextScreenEvent.setValue(SCREEN_ID_MAIN);
+            setCurrentScreen(SCREEN_MAIN);
         } else {
-            nextScreenEvent.setValue(SCREEN_ID_ENTRY);
+            setCurrentScreen(SCREEN_ENTRY);
         }
     }
 

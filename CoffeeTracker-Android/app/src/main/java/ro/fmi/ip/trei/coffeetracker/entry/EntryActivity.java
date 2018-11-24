@@ -1,106 +1,135 @@
 package ro.fmi.ip.trei.coffeetracker.entry;
 
-import android.app.Activity;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
-
-import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.auth.IdpResponse;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
-
-import java.util.Arrays;
-import java.util.List;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 
 import ro.fmi.ip.trei.coffeetracker.R;
+import ro.fmi.ip.trei.coffeetracker.common.BaseActivity;
 import ro.fmi.ip.trei.coffeetracker.databinding.ActivityEntryBinding;
+import ro.fmi.ip.trei.coffeetracker.entry.signin.OtpFragment;
+import ro.fmi.ip.trei.coffeetracker.entry.signin.PhoneInsertFragment;
+import ro.fmi.ip.trei.coffeetracker.entry.signup.FillProfileFragment;
+import ro.fmi.ip.trei.coffeetracker.main.MainActivity;
 
-public class EntryActivity extends Activity {
+public class EntryActivity extends BaseActivity {
 
-    private static final int RC_SIGN_IN = 1;
+    private static final String DEBUG_TAG = EntryActivity.class.getSimpleName();
+
+
 
     private ActivityEntryBinding binding;
+    private EntryActivityViewModel viewModel;
+    private FragmentManager fragmentManager;
 
-    private FirebaseAuth auth;
-
-    private Toast currentToast;
+    // === Lifecycle ===
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        viewModel.goToPhoneInsertSubscreen();
+    }
+
+
+    // ^^^ Lifecycle ^^^
+
+    // === BaseActivity ===
+
+    @Override
+    protected void bindFields() {
+        viewModel = ViewModelProviders.of(this).get(EntryActivityViewModel.class);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_entry);
-
-        auth = FirebaseAuth.getInstance();
-
-        bindView();
-    }
-
-    private void bindView() {
-        binding.signIn.setOnClickListener(v -> { doLogin(); });
-    }
-
-    private void getCurrentUser() {
-        FirebaseUser user = auth.getCurrentUser();
-        if (user == null) {
-            displayMessage("User not logged in");
-            return;
-        }
-
-        String phoneNumber = user.getPhoneNumber();
-        displayMessage("User logged in: " + (phoneNumber == null ? "null" : phoneNumber));
-    }
-
-    private void displayMessage(String message) {
-        Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
-        if (currentToast != null) {
-            currentToast.cancel();
-        }
-        currentToast = toast;
-        currentToast.show();
-    }
-
-    private void doLogout() {
-        auth.signOut();
-    }
-
-    private void doLogin() {
-        // Choose authentication providers
-        List<AuthUI.IdpConfig> providers = Arrays.asList(
-                new AuthUI.IdpConfig.EmailBuilder().build(),
-                new AuthUI.IdpConfig.PhoneBuilder().build(),
-                new AuthUI.IdpConfig.GoogleBuilder().build());
-
-        // Create and launch sign-in intent
-        startActivityForResult(
-                AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setAvailableProviders(providers)
-                        .build(),
-                RC_SIGN_IN);
+        binding.setViewModel(viewModel);
+        fragmentManager = getSupportFragmentManager();
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    protected void subscribeToViewModel() {
+        viewModel.getCurrentScreenEvent().observe(this, this::moveToScreen);
+        viewModel.getCurrentSubscreenEvent().observe(this, this::moveToSubscreen);
+        viewModel.getErrorTextEvent().observe(this, this::displayError);
+    }
 
-        if (requestCode == RC_SIGN_IN) {
-            IdpResponse response = IdpResponse.fromResultIntent(data);
+    // ^^^ BaseActivity ^^^
 
-            if (resultCode == RESULT_OK) {
-                // Successfully signed in
-                // ...
-            } else {
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
-                // ...
-            }
+    private void displayError(int errorType) {
+        switch (errorType) {
+            case EntryActivityViewModel.ERROR_INVALID_PHONE:
+                displayToastMessage(getString(R.string.error_invalid_phone));
+                break;
+
+            case EntryActivityViewModel.ERROR_OTP:
+                displayToastMessage(getString(R.string.error_invalid_otp));
+                break;
+
+            case EntryActivityViewModel.ERROR_TIMEOUT:
+                displayToastMessage(getString(R.string.error_timeout));
+                break;
+
+            default:
+                displayToastMessage(getString(R.string.error_default));
         }
     }
 
+    private void moveToScreen(int screenId) {
+        Intent intent = new Intent();
+        switch (screenId) {
+            case EntryActivityViewModel.SCREEN_MAIN:
+                intent.setClass(this, MainActivity.class);
+                break;
+            default:
+                Log.d(DEBUG_TAG, "Couldn't recognize screen id: " + Integer.toString(screenId));
+        }
+
+        if (intent.getComponent() != null) {
+            startActivity(intent);
+            finish();
+        }
+
+    }
+
+    private void moveToSubscreen(int screenId) {
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment fragment = null;
+        String buttonText = null;
+        switch (screenId) {
+            case EntryActivityViewModel.STEP_PHONEINSERT:
+                fragment = new PhoneInsertFragment();
+                buttonText = getString(R.string.entry_send_code);
+                break;
+
+            case EntryActivityViewModel.STEP_OTP:
+                fragment = new OtpFragment();
+                buttonText = getString(R.string.entry_validate_otp);
+                break;
+
+            case EntryActivityViewModel.STEP_PROFILE:
+                fragment = new FillProfileFragment();
+                buttonText = getString(R.string.entry_signup);
+                break;
+
+            default:
+                Log.d(DEBUG_TAG, "Couldn't recognize screen id: " + Integer.toString(screenId));
+        }
+
+        if (fragment != null) {
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+
+            fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
+        }
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (fragmentManager.getBackStackEntryCount() <= 1) {
+            finish();
+        }
+    }
 }
