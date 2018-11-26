@@ -26,5 +26,8 @@
     <string name="error_invalid_phone">Invalid phone number</string>
     <string name="error_invalid_otp">Invalid Verification Code</string>
     <string name="error_timeout">Too many requests. Try again later</string>
+    <string name="tab_dashboard">Dashboard</string>
+    <string name="tab_records">Records</string>
+    <string name="tab_profile">Profile</string>
 
 </resources>

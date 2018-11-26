@@ -26,7 +26,6 @@
             android:noHistory="true"/>
 
         <activity
-            android:theme="@style/Theme.Design.NoActionBar"
             android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>

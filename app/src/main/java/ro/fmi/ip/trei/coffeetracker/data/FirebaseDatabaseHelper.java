@@ -9,8 +9,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import ro.fmi.ip.trei.coffeetracker.data.callbacks.UserRegisteredCallback;
-import ro.fmi.ip.trei.coffeetracker.data.model.FirebaseUser;
-import ro.fmi.ip.trei.coffeetracker.data.model.User;
+import ro.fmi.ip.trei.coffeetracker.data.model.FirebaseUserEntity;
+import ro.fmi.ip.trei.coffeetracker.data.model.UserEntity;
 import ro.fmi.ip.trei.coffeetracker.util.ModelMapper;
 
 public class FirebaseDatabaseHelper {
@@ -37,9 +37,9 @@ public class FirebaseDatabaseHelper {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
-                            FirebaseUser user = dataSnapshot.getValue(FirebaseUser.class);
+                            FirebaseUserEntity user = dataSnapshot.getValue(FirebaseUserEntity.class);
                             if (user != null) {
-                                User modelUser = ModelMapper.map(user);
+                                UserEntity modelUser = ModelMapper.map(user);
                                 modelUser.setPhoneNumber(phoneNumber);
                                 callback.userExists(modelUser);
                             } else {
@@ -57,7 +57,7 @@ public class FirebaseDatabaseHelper {
                 });
     }
 
-    public void registerUser(User user) {
+    public void registerUser(UserEntity user) {
         databaseReference.child(user.getPhoneNumber())
                 .setValue(ModelMapper.map(user));
     }

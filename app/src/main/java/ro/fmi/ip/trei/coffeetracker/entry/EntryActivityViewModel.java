@@ -9,6 +9,7 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import ro.fmi.ip.trei.coffeetracker.common.BaseViewModel;
 import ro.fmi.ip.trei.coffeetracker.data.UserRepository;
 import ro.fmi.ip.trei.coffeetracker.data.callbacks.UserRegisteredCallback;
+import ro.fmi.ip.trei.coffeetracker.data.model.UserEntity;
 import ro.fmi.ip.trei.coffeetracker.entry.model.User;
 import ro.fmi.ip.trei.coffeetracker.util.ModelMapper;
 import ro.fmi.ip.trei.coffeetracker.util.SingleLiveEvent;
@@ -57,7 +58,7 @@ public class EntryActivityViewModel extends BaseViewModel {
                     } else {
                         userIsNew(loginStateBuilder.build().getPhoneNumber(), new UserRegisteredCallback() {
                             @Override
-                            public void userExists(ro.fmi.ip.trei.coffeetracker.data.model.User user) {
+                            public void userExists(UserEntity user) {
                                 setCurrentScreen(SCREEN_MAIN);
                             }
 
@@ -79,7 +80,7 @@ public class EntryActivityViewModel extends BaseViewModel {
     }
 
     public void setCurrentSubscreen(int screenId) {
-        currentSubscreenEvent.setValue(screenId);
+        currentSubscreenEvent.postValue(screenId);
     }
 
     public LiveData<Integer> getCurrentSubscreenEvent() {

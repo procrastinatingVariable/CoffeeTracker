@@ -97,21 +97,17 @@ public class EntryActivity extends BaseActivity {
     private void moveToSubscreen(int screenId) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment fragment = null;
-        String buttonText = null;
         switch (screenId) {
             case EntryActivityViewModel.STEP_PHONEINSERT:
                 fragment = new PhoneInsertFragment();
-                buttonText = getString(R.string.entry_send_code);
                 break;
 
             case EntryActivityViewModel.STEP_OTP:
                 fragment = new OtpFragment();
-                buttonText = getString(R.string.entry_validate_otp);
                 break;
 
             case EntryActivityViewModel.STEP_PROFILE:
                 fragment = new FillProfileFragment();
-                buttonText = getString(R.string.entry_signup);
                 break;
 
             default:

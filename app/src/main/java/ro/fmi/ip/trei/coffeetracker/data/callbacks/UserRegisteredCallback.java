@@ -1,9 +1,9 @@
 package ro.fmi.ip.trei.coffeetracker.data.callbacks;
 
 
-import ro.fmi.ip.trei.coffeetracker.data.model.User;
+import ro.fmi.ip.trei.coffeetracker.data.model.UserEntity;
 
 public interface UserRegisteredCallback {
-    void userExists(User user);
+    void userExists(UserEntity user);
     void userNonexistent();
 }
