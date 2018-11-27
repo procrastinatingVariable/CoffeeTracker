@@ -6,29 +6,28 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 
-import ro.fmi.ip.trei.coffeetracker.entry.signin.OtpFragmentViewModel;
-import ro.fmi.ip.trei.coffeetracker.entry.signin.PhoneInsertFragmentViewModel;
-import ro.fmi.ip.trei.coffeetracker.entry.signup.FillProfileFragment;
-import ro.fmi.ip.trei.coffeetracker.entry.signup.FillProfileFragmentViewModel;
+import ro.fmi.ip.trei.coffeetracker.entry.signin.OtpViewModel;
+import ro.fmi.ip.trei.coffeetracker.entry.signin.PhoneInsertViewModel;
+import ro.fmi.ip.trei.coffeetracker.entry.signup.FillProfileViewModel;
 
 public class FragmentViewModelFactory implements ViewModelProvider.Factory {
 
-    private EntryActivityViewModel flowViewModel;
+    private EntryViewModel flowViewModel;
 
     public FragmentViewModelFactory(@NonNull FragmentActivity activity) {
-        EntryActivityViewModel viewModel = ViewModelProviders.of(activity).get(EntryActivityViewModel.class);
+        EntryViewModel viewModel = ViewModelProviders.of(activity).get(EntryViewModel.class);
         this.flowViewModel = viewModel;
     }
 
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        if (modelClass.isAssignableFrom(PhoneInsertFragmentViewModel.class)) {
-            return (T) new PhoneInsertFragmentViewModel(flowViewModel);
-        } else if (modelClass.isAssignableFrom(OtpFragmentViewModel.class)) {
-            return (T) new OtpFragmentViewModel(flowViewModel);
-        } else if (modelClass.isAssignableFrom(FillProfileFragmentViewModel.class)) {
-            return (T) new FillProfileFragmentViewModel(flowViewModel);
+        if (modelClass.isAssignableFrom(PhoneInsertViewModel.class)) {
+            return (T) new PhoneInsertViewModel(flowViewModel);
+        } else if (modelClass.isAssignableFrom(OtpViewModel.class)) {
+            return (T) new OtpViewModel(flowViewModel);
+        } else if (modelClass.isAssignableFrom(FillProfileViewModel.class)) {
+            return (T) new FillProfileViewModel(flowViewModel);
         }
 
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());

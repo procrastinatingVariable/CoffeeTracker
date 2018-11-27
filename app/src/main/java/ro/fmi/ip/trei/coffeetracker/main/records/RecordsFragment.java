@@ -17,6 +17,7 @@ import java.util.List;
 import ro.fmi.ip.trei.coffeetracker.R;
 import ro.fmi.ip.trei.coffeetracker.databinding.FragmentRecordsBinding;
 import ro.fmi.ip.trei.coffeetracker.main.model.Record;
+import ro.fmi.ip.trei.coffeetracker.util.Resource;
 
 public class RecordsFragment extends Fragment {
 
@@ -57,8 +58,33 @@ public class RecordsFragment extends Fragment {
     // ^^^ Lifecycle ^^^
 
     private void subscribeToViewModel() {
-        viewModel.recordItems.observe(this, records -> recordsAdapter.updateData(records));
+        viewModel.recordItems.observe(this, resource -> {
+            if (resource == null) {
+                return;
+            }
+
+            switch(resource.status) {
+                case LOADING:
+                    showPreloader();
+                    break;
+
+                case SUCCESS:
+                    hidePreloader();
+                    recordsAdapter.updateData(resource.data);
+                    break;
+
+                case ERROR:
+                    break;
+            }
+        });
     }
 
+    private void showPreloader() {
+        binding.preloader.setVisibility(View.VISIBLE);
+    }
+
+    private void hidePreloader() {
+        binding.preloader.setVisibility(View.INVISIBLE);
+    }
 
 }

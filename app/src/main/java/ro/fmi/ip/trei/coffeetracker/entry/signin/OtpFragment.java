@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import ro.fmi.ip.trei.coffeetracker.R;
 import ro.fmi.ip.trei.coffeetracker.databinding.FragmentOtpBinding;
-import ro.fmi.ip.trei.coffeetracker.entry.EntryActivityViewModel;
+import ro.fmi.ip.trei.coffeetracker.entry.EntryViewModel;
 import ro.fmi.ip.trei.coffeetracker.entry.FragmentViewModelFactory;
 
 public class OtpFragment extends Fragment {
@@ -20,8 +20,8 @@ public class OtpFragment extends Fragment {
 
 
 
-    private EntryActivityViewModel flowViewModel;
-    private OtpFragmentViewModel viewModel;
+    private EntryViewModel flowViewModel;
+    private OtpViewModel viewModel;
     private FragmentOtpBinding binding;
 
 
@@ -45,9 +45,9 @@ public class OtpFragment extends Fragment {
     // ^^^ Lifecycle ^^^
 
     private void bindFields() {
-        flowViewModel = ViewModelProviders.of(getActivity()).get(EntryActivityViewModel.class);
+        flowViewModel = ViewModelProviders.of(getActivity()).get(EntryViewModel.class);
         ViewModelProvider.Factory factory = new FragmentViewModelFactory(getActivity());
-        viewModel = ViewModelProviders.of(this, factory).get(OtpFragmentViewModel.class);
+        viewModel = ViewModelProviders.of(this, factory).get(OtpViewModel.class);
         binding.setViewModel(viewModel);
     }
 

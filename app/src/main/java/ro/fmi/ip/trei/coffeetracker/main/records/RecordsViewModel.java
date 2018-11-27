@@ -4,34 +4,37 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
+import com.google.firebase.FirebaseError;
+
 import java.util.List;
 
 import ro.fmi.ip.trei.coffeetracker.data.model.RecordEntity;
 import ro.fmi.ip.trei.coffeetracker.main.model.Record;
-import ro.fmi.ip.trei.coffeetracker.data.RecordsRepository;
+import ro.fmi.ip.trei.coffeetracker.data.RecordRepository;
 import ro.fmi.ip.trei.coffeetracker.util.ModelMapper;
+import ro.fmi.ip.trei.coffeetracker.util.Resource;
 
 public class RecordsViewModel extends ViewModel {
 
-    private RecordsRepository recordsRepository;
+    private RecordRepository recordsRepository;
 
-    private MutableLiveData<List<Record>> recordItemsMutable = new MutableLiveData<>();
-    public final LiveData<List<Record>> recordItems = recordItemsMutable;
+    private MutableLiveData<Resource<List<Record>, FirebaseError>> recordItemsMutable = new MutableLiveData<>();
+    public final LiveData<Resource<List<Record>, FirebaseError>> recordItems = recordItemsMutable;
 
     public RecordsViewModel() {
-        recordsRepository = RecordsRepository.getInstance();
+        recordsRepository = RecordRepository.getInstance();
     }
 
     public void loadData() {
-        recordsRepository.loadRecords(new RecordsRepository.LoadRecordsCallback() {
+        recordItemsMutable.setValue(Resource.loading());
+        recordsRepository.loadRecords(new RecordRepository.LoadRecordsCallback() {
             @Override
             public void onRecordsLoaded(List<RecordEntity> records) {
-                recordItemsMutable.setValue(ModelMapper.mapList(records, ModelMapper::map));
+                recordItemsMutable.setValue(Resource.success(ModelMapper.mapList(records, ModelMapper::map)));
             }
 
             @Override
             public void onRecordsNotAvailable() {
-
             }
         });
     }

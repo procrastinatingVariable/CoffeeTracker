@@ -3,30 +3,28 @@ package ro.fmi.ip.trei.coffeetracker.entry.signin;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
-import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
-import ro.fmi.ip.trei.coffeetracker.entry.EntryActivity;
-import ro.fmi.ip.trei.coffeetracker.entry.EntryActivityViewModel;
+import ro.fmi.ip.trei.coffeetracker.entry.EntryViewModel;
 import ro.fmi.ip.trei.coffeetracker.entry.LoginState;
 
-public class OtpFragmentViewModel extends ViewModel {
+public class OtpViewModel extends ViewModel {
 
-    public static final String DEBUG_TAG = OtpFragmentViewModel.class.getSimpleName();
+    public static final String DEBUG_TAG = OtpViewModel.class.getSimpleName();
 
     public final MutableLiveData<String> otp = new MutableLiveData<>();
 
 
-    public EntryActivityViewModel flowViewModel;
+    public EntryViewModel flowViewModel;
 
-    public OtpFragmentViewModel(EntryActivityViewModel viewModel) {
+    public OtpViewModel(EntryViewModel viewModel) {
         this.flowViewModel = viewModel;
     }
 
     public void signIn() {
         String otpString = otp.getValue();
         if (otpString == null || otpString.isEmpty()) {
-            flowViewModel.setError(EntryActivityViewModel.ERROR_OTP);
+            flowViewModel.setError(EntryViewModel.ERROR_OTP);
             return;
         }
 

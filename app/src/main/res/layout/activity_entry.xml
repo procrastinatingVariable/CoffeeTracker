@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="ro.fmi.ip.trei.coffeetracker.entry.EntryActivityViewModel"/>
+            type="ro.fmi.ip.trei.coffeetracker.entry.EntryViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

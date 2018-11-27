@@ -14,7 +14,7 @@ import ro.fmi.ip.trei.coffeetracker.entry.model.User;
 import ro.fmi.ip.trei.coffeetracker.util.ModelMapper;
 import ro.fmi.ip.trei.coffeetracker.util.SingleLiveEvent;
 
-public class EntryActivityViewModel extends BaseViewModel {
+public class EntryViewModel extends BaseViewModel {
 
     public static final int SCREEN_MAIN = 1;
     public static final int STEP_PHONEINSERT = 2;
@@ -39,7 +39,7 @@ public class EntryActivityViewModel extends BaseViewModel {
 
 
 
-    public EntryActivityViewModel() {
+    public EntryViewModel() {
         auth = FirebaseAuth.getInstance();
         repository = UserRepository.getInstance();
     }

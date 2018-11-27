@@ -8,24 +8,24 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import ro.fmi.ip.trei.coffeetracker.common.BaseViewModel;
-import ro.fmi.ip.trei.coffeetracker.entry.EntryActivityViewModel;
+import ro.fmi.ip.trei.coffeetracker.entry.EntryViewModel;
 
-public class PhoneInsertFragmentViewModel extends BaseViewModel {
+public class PhoneInsertViewModel extends BaseViewModel {
 
-    public static final String DEBUG_TAG = PhoneInsertFragmentViewModel.class.getSimpleName();
+    public static final String DEBUG_TAG = PhoneInsertViewModel.class.getSimpleName();
 
 
 
     private PhoneAuthProvider phoneAuthProvider;
 
-    private EntryActivityViewModel flowViewModel;
+    private EntryViewModel flowViewModel;
     private PhoneNumberValidator phoneNumberValidator;
 
     private String phoneNumber;
 
 
 
-    public PhoneInsertFragmentViewModel(EntryActivityViewModel flowViewModel) {
+    public PhoneInsertViewModel(EntryViewModel flowViewModel) {
         this.flowViewModel = flowViewModel;
         phoneAuthProvider = PhoneAuthProvider.getInstance();
     }
@@ -50,7 +50,7 @@ public class PhoneInsertFragmentViewModel extends BaseViewModel {
                 sendOtpMessage();
                 flowViewModel.getLoginStateBuilder().phoneNumber(phoneNumber);
             } else {
-                flowViewModel.setError(EntryActivityViewModel.ERROR_INVALID_PHONE);
+                flowViewModel.setError(EntryViewModel.ERROR_INVALID_PHONE);
             }
         }
     }
@@ -68,7 +68,7 @@ public class PhoneInsertFragmentViewModel extends BaseViewModel {
 
                     @Override
                     public void onVerificationFailed(FirebaseException e) {
-                        flowViewModel.setError(EntryActivityViewModel.ERROR_TIMEOUT);
+                        flowViewModel.setError(EntryViewModel.ERROR_TIMEOUT);
                     }
 
                     @Override

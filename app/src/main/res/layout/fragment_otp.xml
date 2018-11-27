@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="ro.fmi.ip.trei.coffeetracker.entry.signin.OtpFragmentViewModel"/>
+            type="ro.fmi.ip.trei.coffeetracker.entry.signin.OtpViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

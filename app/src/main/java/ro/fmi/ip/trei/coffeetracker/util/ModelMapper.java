@@ -1,6 +1,7 @@
 package ro.fmi.ip.trei.coffeetracker.util;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import ro.fmi.ip.trei.coffeetracker.data.model.FirebaseUserEntity;
@@ -42,7 +43,7 @@ public class ModelMapper {
         return new Record(
                 record.getName(),
                 record.getQuantity(),
-                record.getRegistrationDate());
+                new Date(record.getTimestamp()));
     }
 
     public static <T, MT> List<MT> mapList(List<T> list, Mapper<T, MT> mapper) {

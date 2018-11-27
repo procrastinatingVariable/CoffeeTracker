@@ -13,15 +13,14 @@ import android.view.ViewGroup;
 
 import ro.fmi.ip.trei.coffeetracker.R;
 import ro.fmi.ip.trei.coffeetracker.databinding.FragmentFillProfileBinding;
-import ro.fmi.ip.trei.coffeetracker.entry.EntryActivityViewModel;
+import ro.fmi.ip.trei.coffeetracker.entry.EntryViewModel;
 import ro.fmi.ip.trei.coffeetracker.entry.FragmentViewModelFactory;
-import ro.fmi.ip.trei.coffeetracker.entry.signin.PhoneInsertFragmentViewModel;
 
 public class FillProfileFragment extends Fragment {
 
     private FragmentFillProfileBinding binding;
-    private FillProfileFragmentViewModel viewModel;
-    private EntryActivityViewModel flowViewModel;
+    private FillProfileViewModel viewModel;
+    private EntryViewModel flowViewModel;
 
 
 
@@ -54,9 +53,9 @@ public class FillProfileFragment extends Fragment {
     }
 
     private void bindFields() {
-        flowViewModel = ViewModelProviders.of(getActivity()).get(EntryActivityViewModel.class);
+        flowViewModel = ViewModelProviders.of(getActivity()).get(EntryViewModel.class);
         ViewModelProvider.Factory factory = new FragmentViewModelFactory(getActivity());
-        viewModel = ViewModelProviders.of(this, factory).get(FillProfileFragmentViewModel.class);
+        viewModel = ViewModelProviders.of(this, factory).get(FillProfileViewModel.class);
         binding.setViewModel(viewModel);
     }
 

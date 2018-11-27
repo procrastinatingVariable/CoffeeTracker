@@ -1,4 +1,4 @@
-package ro.fmi.ip.trei.coffeetracker.data;
+package ro.fmi.ip.trei.coffeetracker.data.firebase;
 
 import android.support.annotation.NonNull;
 

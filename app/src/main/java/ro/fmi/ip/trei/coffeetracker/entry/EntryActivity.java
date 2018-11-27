@@ -24,7 +24,7 @@ public class EntryActivity extends BaseActivity {
 
 
     private ActivityEntryBinding binding;
-    private EntryActivityViewModel viewModel;
+    private EntryViewModel viewModel;
     private FragmentManager fragmentManager;
 
     // === Lifecycle ===
@@ -43,7 +43,7 @@ public class EntryActivity extends BaseActivity {
 
     @Override
     protected void bindFields() {
-        viewModel = ViewModelProviders.of(this).get(EntryActivityViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(EntryViewModel.class);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_entry);
         binding.setViewModel(viewModel);
         fragmentManager = getSupportFragmentManager();
@@ -60,15 +60,15 @@ public class EntryActivity extends BaseActivity {
 
     private void displayError(int errorType) {
         switch (errorType) {
-            case EntryActivityViewModel.ERROR_INVALID_PHONE:
+            case EntryViewModel.ERROR_INVALID_PHONE:
                 displayToastMessage(getString(R.string.error_invalid_phone));
                 break;
 
-            case EntryActivityViewModel.ERROR_OTP:
+            case EntryViewModel.ERROR_OTP:
                 displayToastMessage(getString(R.string.error_invalid_otp));
                 break;
 
-            case EntryActivityViewModel.ERROR_TIMEOUT:
+            case EntryViewModel.ERROR_TIMEOUT:
                 displayToastMessage(getString(R.string.error_timeout));
                 break;
 
@@ -80,7 +80,7 @@ public class EntryActivity extends BaseActivity {
     private void moveToScreen(int screenId) {
         Intent intent = new Intent();
         switch (screenId) {
-            case EntryActivityViewModel.SCREEN_MAIN:
+            case EntryViewModel.SCREEN_MAIN:
                 intent.setClass(this, MainActivity.class);
                 break;
             default:
@@ -98,15 +98,15 @@ public class EntryActivity extends BaseActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment fragment = null;
         switch (screenId) {
-            case EntryActivityViewModel.STEP_PHONEINSERT:
+            case EntryViewModel.STEP_PHONEINSERT:
                 fragment = new PhoneInsertFragment();
                 break;
 
-            case EntryActivityViewModel.STEP_OTP:
+            case EntryViewModel.STEP_OTP:
                 fragment = new OtpFragment();
                 break;
 
-            case EntryActivityViewModel.STEP_PROFILE:
+            case EntryViewModel.STEP_PROFILE:
                 fragment = new FillProfileFragment();
                 break;
 

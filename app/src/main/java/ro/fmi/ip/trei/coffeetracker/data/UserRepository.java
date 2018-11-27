@@ -1,11 +1,12 @@
 package ro.fmi.ip.trei.coffeetracker.data;
 
 import ro.fmi.ip.trei.coffeetracker.data.callbacks.UserRegisteredCallback;
+import ro.fmi.ip.trei.coffeetracker.data.firebase.FirebaseDatabaseHelper;
 import ro.fmi.ip.trei.coffeetracker.data.model.UserEntity;
 
 public class UserRepository {
 
-    private static UserRepository instance = null;
+    private static volatile UserRepository instance = null;
 
     private FirebaseDatabaseHelper fbDbHelper;
 

@@ -11,18 +11,18 @@ import android.view.ViewGroup;
 
 import ro.fmi.ip.trei.coffeetracker.R;
 import ro.fmi.ip.trei.coffeetracker.databinding.FragmentPhoneInsertBinding;
-import ro.fmi.ip.trei.coffeetracker.entry.EntryActivityViewModel;
+import ro.fmi.ip.trei.coffeetracker.entry.EntryViewModel;
 import ro.fmi.ip.trei.coffeetracker.entry.FragmentViewModelFactory;
 
-public class PhoneInsertFragment extends Fragment implements PhoneInsertFragmentViewModel.PhoneNumberValidator {
+public class PhoneInsertFragment extends Fragment implements PhoneInsertViewModel.PhoneNumberValidator {
 
     private static final String DEFAULT_COUNTY_CODE = "ro";
 
 
 
     private FragmentPhoneInsertBinding binding;
-    private PhoneInsertFragmentViewModel viewModel;
-    private EntryActivityViewModel flowViewModel;
+    private PhoneInsertViewModel viewModel;
+    private EntryViewModel flowViewModel;
 
     // === Lifecycle ===
 
@@ -43,9 +43,9 @@ public class PhoneInsertFragment extends Fragment implements PhoneInsertFragment
     // ^^^ Lifecycle ^^^
 
     private void bindFields() {
-        flowViewModel = ViewModelProviders.of(getActivity()).get(EntryActivityViewModel.class);
+        flowViewModel = ViewModelProviders.of(getActivity()).get(EntryViewModel.class);
         ViewModelProvider.Factory factory = new FragmentViewModelFactory(getActivity());
-        viewModel = ViewModelProviders.of(this, factory).get(PhoneInsertFragmentViewModel.class);
+        viewModel = ViewModelProviders.of(this, factory).get(PhoneInsertViewModel.class);
         viewModel.setPhoneNumberValidator(this);
     }
 
@@ -65,14 +65,14 @@ public class PhoneInsertFragment extends Fragment implements PhoneInsertFragment
         });
     }
 
-    // === PhoneInsertFragmentViewModel.PhoneNumberValidator ===
+    // === PhoneInsertViewModel.PhoneNumberValidator ===
 
     @Override
     public boolean validate(String phoneNumber) {
         return binding.countrCodePicker.isValidFullNumber();
     }
 
-    // ^^^ PhoneInsertFragmentViewModel.PhoneNumberValidator ^^^
+    // ^^^ PhoneInsertViewModel.PhoneNumberValidator ^^^
 
 
 

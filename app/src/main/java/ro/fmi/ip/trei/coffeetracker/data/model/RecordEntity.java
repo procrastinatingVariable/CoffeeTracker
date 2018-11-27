@@ -6,12 +6,16 @@ public class RecordEntity {
 
     private String name;
     private double quantity;
-    private Date registrationDate;
+    private long timestamp;
 
-    public RecordEntity(String name, double quantity, Date registrationDate) {
+    public RecordEntity() {
+
+    }
+
+    public RecordEntity(String name, double quantity, long timestamp) {
         this.name = name;
         this.quantity = quantity;
-        this.registrationDate = registrationDate;
+        this.timestamp = timestamp;
     }
 
     public String getName() {
@@ -30,11 +34,11 @@ public class RecordEntity {
         this.quantity = quantity;
     }
 
-    public Date getRegistrationDate() {
-        return registrationDate;
+    public long getTimestamp() {
+        return timestamp;
     }
 
-    public void setRegistrationDate(Date registrationDate) {
-        this.registrationDate = registrationDate;
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 }
