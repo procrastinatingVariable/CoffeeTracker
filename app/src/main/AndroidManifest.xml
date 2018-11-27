@@ -31,6 +31,10 @@
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".addcaffeine.AddRecordActivity"/>
+
+        <activity android:name=".addcaffeine.DetailsActivity" />
     </application>
 
 </manifest>
