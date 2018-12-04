@@ -9,6 +9,7 @@
     <string name="logo">logo</string>
 
     <string name="entry_send_code">Send code</string>
+    <string name="entry_add_drink">Add drink</string>
     <string name="entry_validate_otp">Validate</string>
     <string name="entry_signup">Sign Up</string>
 
@@ -26,8 +27,5 @@
     <string name="error_invalid_phone">Invalid phone number</string>
     <string name="error_invalid_otp">Invalid Verification Code</string>
     <string name="error_timeout">Too many requests. Try again later</string>
-    <string name="tab_dashboard">Dashboard</string>
-    <string name="tab_records">Records</string>
-    <string name="tab_profile">Profile</string>
 
 </resources>

@@ -10,7 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".splash.SplashActivity"
             android:theme="@style/Theme.Design.NoActionBar">
@@ -20,17 +19,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".entry.EntryActivity"
-            android:noHistory="true"/>
-
+            android:noHistory="true" />
         <activity
-            android:name=".main.MainActivity">
+            android:name=".main.MainActivity"
+            android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+        <activity android:name=".AdaugareActivity"
+            android:exported="true"/>
+        <activity android:name=".DetaliiActivity"
+            android:parentActivityName=".AdaugareActivity"
+
+            ></activity>
     </application>
 
 </manifest>

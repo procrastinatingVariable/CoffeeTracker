@@ -1,18 +1,13 @@
 package ro.fmi.ip.trei.coffeetracker.util;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import ro.fmi.ip.trei.coffeetracker.data.model.FirebaseUserEntity;
-import ro.fmi.ip.trei.coffeetracker.data.model.RecordEntity;
-import ro.fmi.ip.trei.coffeetracker.data.model.UserEntity;
+import ro.fmi.ip.trei.coffeetracker.data.model.FirebaseUser;
+import ro.fmi.ip.trei.coffeetracker.data.model.User;
 import ro.fmi.ip.trei.coffeetracker.entry.model.Formats;
-import ro.fmi.ip.trei.coffeetracker.main.model.Record;
 
 public class ModelMapper {
 
-    public static UserEntity map(ro.fmi.ip.trei.coffeetracker.entry.model.User user) {
-        UserEntity newUser = new UserEntity();
+    public static User map(ro.fmi.ip.trei.coffeetracker.entry.model.User user) {
+        User newUser = new User();
         newUser.setFirstName(user.getFirstName());
         newUser.setLastName(user.getLastName());
         newUser.setPhoneNumber(user.getPhoneNumber());
@@ -22,40 +17,20 @@ public class ModelMapper {
         return newUser;
     }
 
-    public static UserEntity map(FirebaseUserEntity user) {
-        UserEntity newUser = new UserEntity();
+    public static User map(FirebaseUser user) {
+        User newUser = new User();
         newUser.setFirstName(user.getFirstName());
         newUser.setLastName(user.getLastName());
         newUser.setBirthDate(user.getBirthDate());
         return newUser;
     }
 
-    public static FirebaseUserEntity map(UserEntity user) {
-        FirebaseUserEntity newUser = new FirebaseUserEntity();
+    public static FirebaseUser map(User user) {
+        FirebaseUser newUser = new FirebaseUser();
         newUser.setFirstName(user.getFirstName());
         newUser.setLastName(user.getLastName());
         newUser.setBirthDate(user.getBirthDate());
         return newUser;
-    }
-
-    public static Record map(RecordEntity record) {
-        return new Record(
-                record.getName(),
-                record.getQuantity(),
-                record.getRegistrationDate());
-    }
-
-    public static <T, MT> List<MT> mapList(List<T> list, Mapper<T, MT> mapper) {
-        List<MT> mappedList = new ArrayList<>();
-        for (T item : list) {
-            mappedList.add(mapper.map(item));
-        }
-
-        return mappedList;
-    }
-
-    public interface Mapper<T, MT> {
-        MT map(T value);
     }
 
 }

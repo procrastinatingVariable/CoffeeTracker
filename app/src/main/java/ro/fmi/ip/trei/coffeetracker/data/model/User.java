@@ -2,14 +2,14 @@ package ro.fmi.ip.trei.coffeetracker.data.model;
 
 import java.util.Date;
 
-public class UserEntity {
+public class User {
 
     private String phoneNumber;
     private String firstName;
     private String lastName;
     private String birthDate;
 
-    public UserEntity() {
+    public User() {
     }
 
     public String getPhoneNumber() {

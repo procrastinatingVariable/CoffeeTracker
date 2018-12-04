@@ -1,7 +1,7 @@
 package ro.fmi.ip.trei.coffeetracker.data;
 
 import ro.fmi.ip.trei.coffeetracker.data.callbacks.UserRegisteredCallback;
-import ro.fmi.ip.trei.coffeetracker.data.model.UserEntity;
+import ro.fmi.ip.trei.coffeetracker.data.model.User;
 
 public class UserRepository {
 
@@ -30,7 +30,7 @@ public class UserRepository {
         fbDbHelper.userRegistered(phoneNumber, callback);
     }
 
-    public void registerUser(UserEntity user) {
+    public void registerUser(User user) {
         fbDbHelper.registerUser(user);
     }
 

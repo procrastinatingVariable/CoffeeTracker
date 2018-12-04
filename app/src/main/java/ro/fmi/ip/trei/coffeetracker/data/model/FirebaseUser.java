@@ -1,12 +1,12 @@
 package ro.fmi.ip.trei.coffeetracker.data.model;
 
-public class FirebaseUserEntity {
+public class FirebaseUser {
 
     private String firstName;
     private String lastName;
     private String birthDate;
 
-    public FirebaseUserEntity() {
+    public FirebaseUser() {
     }
 
     public String getFirstName() {

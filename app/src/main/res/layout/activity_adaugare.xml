@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdaugareActivity">
+
+    <ImageButton
+        android:id="@+id/image_button_cafea"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="79dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="37dp"
+        android:contentDescription="Cafea"
+        android:src="@drawable/coffee"
+        app:layout_constraintBottom_toTopOf="@+id/image_button_cola"
+        app:layout_constraintEnd_toStartOf="@+id/image_button_ceai"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/image_button_ceai"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="89dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:contentDescription="Ceai"
+        android:scaleType="fitCenter"
+        android:src="@drawable/tea"
+        app:layout_constraintBottom_toTopOf="@+id/image_button_cola"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/image_button_cafea"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/image_button_cola"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="107dp"
+        android:layout_marginBottom="94dp"
+        android:contentDescription="Cola"
+        android:scaleType="fitCenter"
+        android:src="@drawable/cola"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_button_cafea"
+        tools:srcCompat="@tools:sample/avatars" />
+</android.support.constraint.ConstraintLayout>
