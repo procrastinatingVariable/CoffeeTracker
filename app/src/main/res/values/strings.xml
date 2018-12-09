@@ -1,33 +1,41 @@
 <resources>
-    <string name="app_name">CoffeeTracker</string>
-    <string name="sign_in">Sign In</string>
-    <string name="sign_out">Sign Out</string>
-    <string name="get_user">Get User</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- GENERAL -->
+    <string name="app_name">CoffeeTracker</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="birthdate">Birthdate</string>
+    <string name="email">Email</string>
+    <string name="save">Save</string>
+
+    <!-- Splash Screen -->
     <string name="logo">logo</string>
 
+    <!-- PhoneInsert Screen -->
     <string name="entry_send_code">Send code</string>
-    <string name="entry_validate_otp">Validate</string>
-    <string name="entry_signup">Sign Up</string>
-
-    <string name="otp_verify">Verify</string>
-
-    <string name="profile_save">Save</string>
-    <string name="profile_first_name">First Name</string>
-    <string name="profile_last_name">Last Name</string>
-    <string name="profile_email">Email</string>
-    <string name="profile_birthdate">Birth Date</string>
-
     <string name="phone_number">Phone number</string>
 
+    <!-- Otp Screen -->
+    <string name="otp_verify">Verify</string>
+
+    <!-- FillProfile Screen -->
+    <string name="profile_save">@string/save</string>
+    <string name="profile_first_name">@string/first_name</string>
+    <string name="profile_last_name">@string/last_name</string>
+    <string name="profile_email">@string/email</string>
+    <string name="profile_birthdate">@string/birthdate</string>
+
+    <!-- Errors -->
     <string name="error_default">Error occurred</string>
     <string name="error_invalid_phone">Invalid phone number</string>
     <string name="error_invalid_otp">Invalid Verification Code</string>
     <string name="error_timeout">Too many requests. Try again later</string>
+
+    <!-- Menu items -->
     <string name="tab_dashboard">Dashboard</string>
     <string name="tab_records">Records</string>
     <string name="tab_profile">Profile</string>
+
+    <string name="option_pvt">PVT</string>
 
 </resources>
