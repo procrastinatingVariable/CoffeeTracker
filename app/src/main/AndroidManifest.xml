@@ -34,7 +34,9 @@
 
         <activity android:name=".addcaffeine.AddRecordActivity"/>
 
-        <activity android:name=".addcaffeine.DetailsActivity" />
+        <activity android:name=".addcaffeine.DetailsActivity"
+            android:parentActivityName=".addcaffeine.AddRecordActivity"/>
+
     </application>
 
 </manifest>

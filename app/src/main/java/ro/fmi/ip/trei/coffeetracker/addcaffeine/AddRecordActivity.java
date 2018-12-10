@@ -1,13 +1,16 @@
 package ro.fmi.ip.trei.coffeetracker.addcaffeine;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import ro.fmi.ip.trei.coffeetracker.R;
+
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class AddRecordActivity extends AppCompatActivity {
 
@@ -46,7 +49,7 @@ public class AddRecordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(AddRecordActivity.this, "Cola", Toast.LENGTH_LONG).show();
-                optiune = "clipart_cola";
+                optiune = "cola";
                 adaugaBautura(v);
             }
         });
