@@ -187,10 +187,10 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         if (fragmentManager.getBackStackEntryCount() == 1) {
             finish();
         }
+        super.onBackPressed();
     }
 
     // === FragmentManager.OnBackstackChangeListener ===
