@@ -5,17 +5,19 @@ import com.google.firebase.database.Exclude;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Beverage {
+public class Bautura {
 
-    private String denumire, dozaj, urlImagine;
+    private String denumire, dozaj, urlImagine, oreDormite;
 
-    public Beverage() {
+
+    public Bautura() {
     }
 
-    public Beverage(String denumire, String dozaj, String urlImagine) {
+    public Bautura(String denumire, String dozaj, String urlImagine, String oreDormite) {
         this.denumire = denumire;
         this.dozaj = dozaj;
         this.urlImagine = urlImagine;
+        this.oreDormite = oreDormite;
     }
 
     @Exclude
@@ -24,6 +26,7 @@ public class Beverage {
         result.put("denumire", denumire);
         result.put("dozaj", dozaj);
         result.put("urlImagine", urlImagine);
+        result.put("oreDormite", oreDormite);
         return result;
     }
 
@@ -50,4 +53,13 @@ public class Beverage {
     public void setUrlImagine(String urlImagine) {
         this.urlImagine = urlImagine;
     }
+
+    public String getOreDormite() {
+        return oreDormite;
+    }
+
+    public void setOreDormite(String oreDormite) {
+        this.oreDormite = oreDormite;
+    }
+
 }
