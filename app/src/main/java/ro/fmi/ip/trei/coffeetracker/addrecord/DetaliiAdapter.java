@@ -1,5 +1,6 @@
 package ro.fmi.ip.trei.coffeetracker.addrecord;
 
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +49,7 @@ public class DetaliiAdapter extends RecyclerView.Adapter<DetaliiAdapter.MyViewHo
         Bautura bautura = bauturiList.get(position);
         holder.denumire.setText(bautura.getDenumire());
         holder.dozaj.setText(bautura.getDozaj());
-//        holder.urlImagine.setText(bautura.getUrlImagine());
+        holder.urlImagine.setText(bautura.getUrlImagine());
         Picasso.get().load(bautura.getUrlImagine()).into(holder.imagineBautura);
     }
 

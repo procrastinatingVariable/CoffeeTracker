@@ -27,6 +27,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -89,11 +91,16 @@ public class DetaliiActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
 
+                //Get user data
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                FirebaseUser user = auth.getCurrentUser();
+                String userId = user.getUid();
+
                 Bautura bautura = bauturiList.get(position);
                 Toast.makeText(getApplicationContext(), bautura.getDenumire() + " is selected!", Toast.LENGTH_SHORT).show();
                 Context context = DetaliiActivity.this;
-                String key = mDatabase.child("records").child("+40727138440").push().getKey();
-//              String key = mDatabase.child("records").child(userId).push().getKey();
+                //String key = mDatabase.child("records").child("+40727138440").push().getKey();
+                String key = mDatabase.child("records").child(userId).push().getKey();
                 if (!primul) {
                     SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
                     editor.putString("date", new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
@@ -123,8 +130,8 @@ public class DetaliiActivity extends AppCompatActivity {
 
                             Map<String, Object> messageValues = bautura.toMap();
                             Map<String, Object> childUpdates = new HashMap<>();
-                            childUpdates.put("/records/" + "+40727138440" + "/" + key, messageValues);
-//                        childUpdates.put("/records/" + userId + "/" + key, messageValues);
+//                            childUpdates.put("/records/" + "+40727138440" + "/" + key, messageValues);
+                            childUpdates.put("/records/" + userId + "/" + key, messageValues);
                             mDatabase.updateChildren(childUpdates);
                             //pop-up
                             AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -154,10 +161,6 @@ public class DetaliiActivity extends AppCompatActivity {
                             //codul comentat este cel care ia numarul de telefon al userului curent si pune in el o inregistrare noua
                             //cel necomentat adauga o inregistrare noua in contul lui gabi
 
-                            //Get user data
-//                FirebaseAuth auth = FirebaseAuth.getInstance();
-//                FirebaseUser user = auth.getCurrentUser();
-//                String userId = user.getUid();
 
                             // Set up the buttons
                             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -171,8 +174,8 @@ public class DetaliiActivity extends AppCompatActivity {
                                     Map<String, Object> messageValues = bautura.toMap();
                                     Map<String, Object> childUpdates = new HashMap<>();
 
-                                    childUpdates.put("/records/" + "+40727138440" + "/" + key, messageValues);
-//                        childUpdates.put("/records/" + userId + "/" + key, messageValues);
+//                                    childUpdates.put("/records/" + "+40727138440" + "/" + key, messageValues);
+                                    childUpdates.put("/records/" + userId + "/" + key, messageValues);
                                     mDatabase.updateChildren(childUpdates);
 
                                     sendNotification();
@@ -227,7 +230,7 @@ public class DetaliiActivity extends AppCompatActivity {
                     //cel necomentat adauga o inregistrare noua in contul lui gabi
 
                     //Get user data
-//                FirebaseAuth auth = FirebaseAuth.getInstance();
+ //               FirebaseAuth auth = FirebaseAuth.getInstance();
 //                FirebaseUser user = auth.getCurrentUser();
 //                String userId = user.getUid();
 
@@ -241,8 +244,8 @@ public class DetaliiActivity extends AppCompatActivity {
                             bautura.setUrlImagine(timestamp);
                             Map<String, Object> messageValues = bautura.toMap();
                             Map<String, Object> childUpdates = new HashMap<>();
-                            childUpdates.put("/records/" + "+40727138440" + "/" + key, messageValues);
-//                        childUpdates.put("/records/" + userId + "/" + key, messageValues);
+ //                           childUpdates.put("/records/" + "+40727138440" + "/" + key, messageValues);
+                        childUpdates.put("/records/" + userId + "/" + key, messageValues);
                             mDatabase.updateChildren(childUpdates);
                             sendNotification();
                             Intent intent = new Intent(context, AdaugareActivity.class);
