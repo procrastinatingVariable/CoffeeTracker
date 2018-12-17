@@ -34,7 +34,8 @@
 
         <activity android:name=".addcaffeine.AddRecordActivity"/>
 
-        <activity android:name=".addcaffeine.DetailsActivity" />
+        <activity android:name=".addrecord.DetailsActivity"
+            android:parentActivityName=".addrecord.AddRecordActivity"/>
 
         <activity
             android:name=".pvt.PvtActivity"

@@ -49,11 +49,14 @@ public class RecordsFragment extends Fragment {
 
         subscribeToViewModel();
 
-        viewModel.loadData();
-
         return binding.getRoot();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        viewModel.loadData();
+    }
 
     // ^^^ Lifecycle ^^^
 
