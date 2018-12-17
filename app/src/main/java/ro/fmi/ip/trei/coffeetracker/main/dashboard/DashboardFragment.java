@@ -10,10 +10,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import ro.fmi.ip.trei.coffeetracker.R;
-import ro.fmi.ip.trei.coffeetracker.addcaffeine.AddRecordActivity;
+import ro.fmi.ip.trei.coffeetracker.addrecord.AddRecordActivity;
 import ro.fmi.ip.trei.coffeetracker.databinding.FragmentDashboardBinding;
 
 

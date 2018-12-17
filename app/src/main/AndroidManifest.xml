@@ -32,10 +32,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".addcaffeine.AddRecordActivity"/>
+        <activity android:name=".addrecord.AddRecordActivity"/>
 
-        <activity android:name=".addcaffeine.DetailsActivity"
-            android:parentActivityName=".addcaffeine.AddRecordActivity"/>
+        <activity android:name=".addrecord.DetailsActivity"
+            android:parentActivityName=".addrecord.AddRecordActivity"/>
 
     </application>
 

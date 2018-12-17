@@ -4,55 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addcaffeine.AddRecordActivity">
+    tools:context=".addrecord.AddRecordActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <ImageButton
         android:id="@+id/image_button_cafea"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="79dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="37dp"
         android:contentDescription="Cafea"
+        android:scaleType="centerCrop"
         android:src="@drawable/coffee"
-        app:layout_constraintBottom_toTopOf="@+id/image_button_cola"
-        app:layout_constraintEnd_toStartOf="@+id/image_button_ceai"
+        app:layout_constraintBottom_toTopOf="@+id/image_button_ceai"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/image_button_ceai"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="89dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="32dp"
         android:contentDescription="Ceai"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         android:src="@drawable/tea"
         app:layout_constraintBottom_toTopOf="@+id/image_button_cola"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/image_button_cafea"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_button_cafea" />
 
     <ImageButton
         android:id="@+id/image_button_cola"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginStart="125dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="107dp"
-        android:layout_marginBottom="94dp"
         android:contentDescription="Cola"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         android:src="@drawable/cola"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_button_cafea"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/image_button_ceai" />
 </android.support.constraint.ConstraintLayout>

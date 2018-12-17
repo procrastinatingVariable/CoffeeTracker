@@ -1,4 +1,4 @@
-package ro.fmi.ip.trei.coffeetracker.addcaffeine;
+package ro.fmi.ip.trei.coffeetracker.addrecord;
 
 import com.google.firebase.database.Exclude;
 

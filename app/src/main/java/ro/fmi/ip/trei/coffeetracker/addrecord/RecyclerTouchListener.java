@@ -1,4 +1,4 @@
-package ro.fmi.ip.trei.coffeetracker.addcaffeine;
+package ro.fmi.ip.trei.coffeetracker.addrecord;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
