@@ -4,9 +4,9 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Build;
 import android.os.Bundle;
-import android.databinding.DataBindingUtil;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -26,10 +26,13 @@ import ro.fmi.ip.trei.coffeetracker.main.records.RecordsFragment;
 import ro.fmi.ip.trei.coffeetracker.pvt.PvtActivity;
 
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements FragmentManager.OnBackStackChangedListener{
 
     private static final String DEBUG_TAG = MainActivity.class.getSimpleName();
-
+    private static final String BACKSTACK_DASHBOARD = "dashboard";
+    private static final String BACKSTACK_RECORDS = "records";
+    private static final String BACKSTACK_PROFILE = "profile";
+    private static final String BACKSTACK_UNKNOWN = "unknown";
 
 
     private ActivityMainBinding binding;
@@ -43,6 +46,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         initView();
+        fragmentManager.addOnBackStackChangedListener(this);
     }
 
 
@@ -165,8 +169,20 @@ public class MainActivity extends BaseActivity {
     private void goToSubscreen(Fragment fragment) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(fragment.getClass().getSimpleName());
+        transaction.addToBackStack(getBackstackEntryNameFor(fragment));
         transaction.commit();
+    }
+
+    private String getBackstackEntryNameFor(Fragment fragment) {
+        if (fragment instanceof DashboardFragment) {
+            return BACKSTACK_DASHBOARD;
+        } else if (fragment instanceof RecordsFragment) {
+            return BACKSTACK_RECORDS;
+        } else if (fragment instanceof ProfileFragment) {
+            return BACKSTACK_PROFILE;
+        } else {
+            return BACKSTACK_UNKNOWN;
+        }
     }
 
     @Override
@@ -176,4 +192,37 @@ public class MainActivity extends BaseActivity {
             finish();
         }
     }
+
+    // === FragmentManager.OnBackstackChangeListener ===
+
+    @Override
+    public void onBackStackChanged() {
+        int backStackEntryCount = fragmentManager.getBackStackEntryCount();
+        if (backStackEntryCount == 0) {
+            return;
+        }
+        int topBackStackEntryIndex = backStackEntryCount - 1;
+        FragmentManager.BackStackEntry backStackEntry =  fragmentManager.getBackStackEntryAt(topBackStackEntryIndex);
+        String entryName = backStackEntry.getName();
+        String title;
+        switch (entryName) {
+            case BACKSTACK_DASHBOARD:
+                title = getString(R.string.title_dashboard);
+                break;
+
+            case BACKSTACK_PROFILE:
+                title = getString(R.string.title_profile);
+                break;
+
+            case BACKSTACK_RECORDS:
+                title = getString(R.string.title_records);
+                break;
+
+            default:
+                title = getString(R.string.app_name);
+        }
+        setTitle(title);
+    }
+
+    // ^^^ FragmentManager.OnBackstackChangeListener ^^^
 }
