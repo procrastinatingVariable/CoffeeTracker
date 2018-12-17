@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import ro.fmi.ip.trei.coffeetracker.R;
-import ro.fmi.ip.trei.coffeetracker.addrecord.AddRecordActivity;
+import ro.fmi.ip.trei.coffeetracker.addrecord.AdaugareActivity;
 import ro.fmi.ip.trei.coffeetracker.databinding.FragmentDashboardBinding;
 
 
@@ -31,7 +31,7 @@ public class DashboardFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dashboard, container, false);
 
         binding.fab.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), AddRecordActivity.class);
+            Intent intent = new Intent(getContext(), AdaugareActivity.class);
             startActivity(intent);
         });
 

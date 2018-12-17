@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 import ro.fmi.ip.trei.coffeetracker.R;
 
-public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.MyViewHolder> {
+public class DetaliiAdapter extends RecyclerView.Adapter<DetaliiAdapter.MyViewHolder> {
 
-    private ArrayList<Beverage> bauturiList;
+    private ArrayList<Bautura> bauturiList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView denumire, dozaj, urlImagine;
@@ -31,7 +31,7 @@ public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.MyViewHo
     }
 
 
-    public DetailsAdapter(ArrayList<Beverage> bauturiList) {
+    public DetaliiAdapter(ArrayList<Bautura> bauturiList) {
         this.bauturiList = bauturiList;
     }
 
@@ -45,7 +45,7 @@ public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Beverage bautura = bauturiList.get(position);
+        Bautura bautura = bauturiList.get(position);
         holder.denumire.setText(bautura.getDenumire());
         holder.dozaj.setText(bautura.getDozaj());
 //        holder.urlImagine.setText(bautura.getUrlImagine());

@@ -1,15 +1,15 @@
 package ro.fmi.ip.trei.coffeetracker.addrecord;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import ro.fmi.ip.trei.coffeetracker.R;
 
-public class AddRecordActivity extends AppCompatActivity {
+public class AdaugareActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "ro.fmi.ip.trei.coffeetracker";
 
@@ -29,7 +29,7 @@ public class AddRecordActivity extends AppCompatActivity {
         imageButtonCafea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(AddRecordActivity.this, "Cafea", Toast.LENGTH_LONG).show();
+                Toast.makeText(AdaugareActivity.this, "Cafea", Toast.LENGTH_LONG).show();
                 optiune = "cafea";
                 adaugaBautura(v);
             }
@@ -37,7 +37,7 @@ public class AddRecordActivity extends AppCompatActivity {
         imageButtonCeai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(AddRecordActivity.this, "Ceai", Toast.LENGTH_LONG).show();
+                Toast.makeText(AdaugareActivity.this, "Ceai", Toast.LENGTH_LONG).show();
                 optiune = "ceai";
                 adaugaBautura(v);
             }
@@ -45,14 +45,14 @@ public class AddRecordActivity extends AppCompatActivity {
         imageButtonCola.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(AddRecordActivity.this, "Cola", Toast.LENGTH_LONG).show();
+                Toast.makeText(AdaugareActivity.this, "Cola", Toast.LENGTH_LONG).show();
                 optiune = "cola";
                 adaugaBautura(v);
             }
         });
     }
     public void adaugaBautura(View view) {
-        Intent intent = new Intent(this, DetailsActivity.class);
+        Intent intent = new Intent(this, DetaliiActivity.class);
         intent.putExtra(EXTRA_MESSAGE, optiune);
         startActivity(intent);
     }
