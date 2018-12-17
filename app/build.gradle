@@ -46,6 +46,8 @@ dependencies {
     implementation "com.google.firebase:firebase-database:16.0.1"
 
     implementation 'com.hbb20:ccp:2.2.3'
+
+    implementation "android.arch.work:work-runtime:1.0.0-alpha13"
 }
 
 apply plugin: 'com.google.gms.google-services'
