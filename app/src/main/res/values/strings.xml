@@ -37,5 +37,7 @@
     <string name="tab_profile">Profile</string>
 
     <string name="option_pvt">PVT</string>
+    <string name="error_app_unauthorized">Something went wrong. Try again later.</string>
+    <string name="error_api_missing">Google Play Services missing</string>
 
 </resources>

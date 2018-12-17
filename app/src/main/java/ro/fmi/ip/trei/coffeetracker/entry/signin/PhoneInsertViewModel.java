@@ -1,6 +1,10 @@
 package ro.fmi.ip.trei.coffeetracker.entry.signin;
 
+import com.google.firebase.FirebaseApiNotAvailableException;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.FirebaseTooManyRequestsException;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
@@ -68,7 +72,15 @@ public class PhoneInsertViewModel extends BaseViewModel {
 
                     @Override
                     public void onVerificationFailed(FirebaseException e) {
-                        flowViewModel.setError(EntryViewModel.ERROR_TIMEOUT);
+                        if (e instanceof FirebaseAuthInvalidCredentialsException) {
+                            flowViewModel.setError(EntryViewModel.ERROR_INVALID_CREDENTIALS);
+                        } else if (e instanceof FirebaseAuthException) {
+                            flowViewModel.setError(EntryViewModel.ERROR_FIREBASE_AUTH);
+                        } else if (e instanceof FirebaseTooManyRequestsException) {
+                            flowViewModel.setError(EntryViewModel.ERROR_TIMEOUT);
+                        } else if (e instanceof FirebaseApiNotAvailableException) {
+                            flowViewModel.setError(EntryViewModel.ERROR_PLAY_SERVICES);
+                        }
                     }
 
                     @Override

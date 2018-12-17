@@ -72,6 +72,17 @@ public class EntryActivity extends BaseActivity {
                 displayToastMessage(getString(R.string.error_timeout));
                 break;
 
+            case EntryViewModel.ERROR_FIREBASE_AUTH:
+                displayToastMessage(getString(R.string.error_app_unauthorized));
+                break;
+
+            case EntryViewModel.ERROR_INVALID_CREDENTIALS:
+                displayToastMessage(getString(R.string.error_invalid_phone));
+                break;
+
+            case EntryViewModel.ERROR_PLAY_SERVICES:
+                displayToastMessage(getString(R.string.error_api_missing));
+
             default:
                 displayToastMessage(getString(R.string.error_default));
         }

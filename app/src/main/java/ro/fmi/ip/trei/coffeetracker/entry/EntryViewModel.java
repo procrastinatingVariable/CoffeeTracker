@@ -22,10 +22,12 @@ public class EntryViewModel extends BaseViewModel {
     public static final int STEP_PROFILE = 4;
 
     public static final int ERROR_INVALID_PHONE = 40;
-    public static final int ERROR_FIREBASE_AUTH = 41;
+    public static final int ERROR_INVALID_CREDENTIALS = 41;
     public static final int ERROR_REGISTER = 42;
     public static final int ERROR_OTP = 43;
     public static final int ERROR_TIMEOUT = 44;
+    public static final int ERROR_PLAY_SERVICES = 45;
+    public static final int ERROR_FIREBASE_AUTH = 46;
 
     private SingleLiveEvent<Integer> currentSubscreenEvent = new SingleLiveEvent<>();
 
@@ -53,7 +55,7 @@ public class EntryViewModel extends BaseViewModel {
                         if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                             setError(ERROR_OTP);
                         } else {
-                            setError(ERROR_FIREBASE_AUTH);
+                            setError(ERROR_INVALID_CREDENTIALS);
                         }
                     } else {
                         userIsNew(loginStateBuilder.build().getPhoneNumber(), new UserRegisteredCallback() {
