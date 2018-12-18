@@ -41,6 +41,7 @@ import java.util.concurrent.TimeUnit;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import ro.fmi.ip.trei.coffeetracker.R;
+import ro.fmi.ip.trei.coffeetracker.main.MainActivity;
 
 public class DetaliiActivity extends AppCompatActivity {
 
@@ -175,7 +176,7 @@ public class DetaliiActivity extends AppCompatActivity {
                                     timestamp = inputTime.getText().toString();
                                     long timestampValue;
                                     try {
-                                        timestampValue = (new SimpleDateFormat("dd/MM/yyyy HH:MM").parse(timestamp)).getTime();
+                                        timestampValue = (new SimpleDateFormat("dd/MM/yyyy HH:mm")).parse(timestamp).getTime();
                                     } catch (ParseException e) {
                                         e.printStackTrace();
                                         timestampValue = new Date().getTime();
@@ -193,6 +194,7 @@ public class DetaliiActivity extends AppCompatActivity {
                                     sendNotification();
 
                                     Intent intent = new Intent(context, AdaugareActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                                     startActivity(intent);
                                 }
                             });
@@ -254,7 +256,7 @@ public class DetaliiActivity extends AppCompatActivity {
                             timestamp = inputTime.getText().toString();
                             long timestampValue;
                             try {
-                                timestampValue = (new SimpleDateFormat("dd/MM/yyyy HH:MM").parse(timestamp)).getTime();
+                                timestampValue = (new SimpleDateFormat("dd/MM/yyyy HH:mm")).parse(timestamp).getTime();
                             } catch (ParseException e) {
                                 e.printStackTrace();
                                 timestampValue = new Date().getTime();
@@ -267,7 +269,8 @@ public class DetaliiActivity extends AppCompatActivity {
                             childUpdates.put("/records/" + userPhoneNumber + "/" + key, messageValues);
                             mDatabase.updateChildren(childUpdates);
                             sendNotification();
-                            Intent intent = new Intent(context, AdaugareActivity.class);
+                            Intent intent = new Intent(context, MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent);
                         }
                     });
