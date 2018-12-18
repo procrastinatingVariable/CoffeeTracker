@@ -7,17 +7,22 @@ import java.util.Map;
 
 public class Bautura {
 
-    private String denumire, dozaj, urlImagine, oreDormite;
+    private String denumire;
+    private double dozaj;
+    private String urlImagine;
+    private long timestamp;
+    private double oreDormite;
 
 
     public Bautura() {
     }
 
-    public Bautura(String denumire, String dozaj, String urlImagine, String oreDormite) {
+    public Bautura(String denumire, double dozaj, String urlImagine, long oraInregistrare, double oreDormite) {
         this.denumire = denumire;
         this.dozaj = dozaj;
         this.urlImagine = urlImagine;
         this.oreDormite = oreDormite;
+        this.timestamp = oraInregistrare;
     }
 
     @Exclude
@@ -27,6 +32,7 @@ public class Bautura {
         result.put("dozaj", dozaj);
         result.put("urlImagine", urlImagine);
         result.put("oreDormite", oreDormite);
+        result.put("timestamp", timestamp);
         return result;
     }
 
@@ -38,11 +44,11 @@ public class Bautura {
         this.denumire = denumire;
     }
 
-    public String getDozaj() {
+    public double getDozaj() {
         return dozaj;
     }
 
-    public void setDozaj(String dozaj) {
+    public void setDozaj(double dozaj) {
         this.dozaj = dozaj;
     }
 
@@ -54,12 +60,19 @@ public class Bautura {
         this.urlImagine = urlImagine;
     }
 
-    public String getOreDormite() {
+    public double getOreDormite() {
         return oreDormite;
     }
 
-    public void setOreDormite(String oreDormite) {
+    public void setOreDormite(double oreDormite) {
         this.oreDormite = oreDormite;
     }
 
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public long getTimestamp() {
+        return this.timestamp;
+    }
 }

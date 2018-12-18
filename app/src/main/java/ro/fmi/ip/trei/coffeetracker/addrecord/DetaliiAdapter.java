@@ -47,7 +47,7 @@ public class DetaliiAdapter extends RecyclerView.Adapter<DetaliiAdapter.MyViewHo
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Bautura bautura = bauturiList.get(position);
         holder.denumire.setText(bautura.getDenumire());
-        holder.dozaj.setText(bautura.getDozaj());
+        holder.dozaj.setText(Double.toString(bautura.getDozaj()));
 //        holder.urlImagine.setText(bautura.getUrlImagine());
         Picasso.get().load(bautura.getUrlImagine()).into(holder.imagineBautura);
     }
