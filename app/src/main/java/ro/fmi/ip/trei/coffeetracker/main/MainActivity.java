@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -26,7 +28,8 @@ import ro.fmi.ip.trei.coffeetracker.main.records.RecordsFragment;
 import ro.fmi.ip.trei.coffeetracker.pvt.PvtActivity;
 
 
-public class MainActivity extends BaseActivity implements FragmentManager.OnBackStackChangedListener{
+public class MainActivity extends BaseActivity implements FragmentManager.OnBackStackChangedListener,
+        BottomNavigationView.OnNavigationItemSelectedListener {
 
     private static final String DEBUG_TAG = MainActivity.class.getSimpleName();
     private static final String BACKSTACK_DASHBOARD = "dashboard";
@@ -136,34 +139,9 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
     }
 
     private void initView() {
-        binding.bottomNavigation.setOnNavigationItemSelectedListener(this::onBottomNavigationItemSelected);
+        binding.bottomNavigation.setOnNavigationItemSelectedListener(this);
         Fragment fragment = new DashboardFragment();
         goToSubscreen(fragment);
-    }
-
-    private boolean onBottomNavigationItemSelected(MenuItem menuItem) {
-        int itemId = menuItem.getItemId();
-        Fragment fragment;
-        switch(itemId) {
-            case R.id.tab_dashboard:
-                fragment = new DashboardFragment();
-                break;
-
-            case R.id.tab_profile:
-                fragment = new ProfileFragment();
-                break;
-
-            case R.id.tab_records:
-                fragment = new RecordsFragment();
-                break;
-
-            default:
-                Log.w(DEBUG_TAG, "Item id not recognized: " + Integer.toString(itemId));
-                return false;
-
-        }
-        goToSubscreen(fragment);
-        return true;
     }
 
     private void goToSubscreen(Fragment fragment) {
@@ -202,8 +180,39 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
             return;
         }
         int topBackStackEntryIndex = backStackEntryCount - 1;
-        FragmentManager.BackStackEntry backStackEntry =  fragmentManager.getBackStackEntryAt(topBackStackEntryIndex);
-        String entryName = backStackEntry.getName();
+        FragmentManager.BackStackEntry topBackstackEntry = fragmentManager
+                .getBackStackEntryAt(topBackStackEntryIndex);
+
+        syncTitleToScreen(topBackstackEntry);
+        syncBottomNavSelectToScreen(topBackstackEntry);
+    }
+
+    // ^^^ FragmentManager.OnBackstackChangeListener ^^^
+
+    private void syncBottomNavSelectToScreen(FragmentManager.BackStackEntry entry) {
+        String entryName = entry.getName();
+        int selectedItemId;
+        switch (entryName) {
+            case BACKSTACK_DASHBOARD:
+                selectedItemId = R.id.tab_dashboard;
+                break;
+
+            case BACKSTACK_PROFILE:
+                selectedItemId = R.id.tab_profile;
+                break;
+
+            case BACKSTACK_RECORDS:
+                selectedItemId = R.id.tab_records;
+                break;
+
+            default:
+                selectedItemId = R.id.tab_dashboard;
+        }
+        binding.bottomNavigation.setSelectedItemId(selectedItemId, false);
+    }
+
+    private void syncTitleToScreen(FragmentManager.BackStackEntry entry) {
+        String entryName = entry.getName();
         String title;
         switch (entryName) {
             case BACKSTACK_DASHBOARD:
@@ -224,5 +233,33 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
         setTitle(title);
     }
 
-    // ^^^ FragmentManager.OnBackstackChangeListener ^^^
+    // === BottomNavigation.OnNavigationItemSelectedListener ===
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        int itemId = menuItem.getItemId();
+        Fragment fragment;
+        switch(itemId) {
+            case R.id.tab_dashboard:
+                fragment = new DashboardFragment();
+                break;
+
+            case R.id.tab_profile:
+                fragment = new ProfileFragment();
+                break;
+
+            case R.id.tab_records:
+                fragment = new RecordsFragment();
+                break;
+
+            default:
+                Log.w(DEBUG_TAG, "Item id not recognized: " + Integer.toString(itemId));
+                return false;
+
+        }
+        goToSubscreen(fragment);
+        return true;
+    }
+
+    // ^^^ BottomNavigation.OnNavigationItemSelectedListener ^^^
 }
