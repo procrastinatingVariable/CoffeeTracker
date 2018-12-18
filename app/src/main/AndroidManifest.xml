@@ -42,9 +42,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".addrecord.AdaugareActivity"/>
+        <activity android:name=".addrecord.AdaugareActivity"
+            android:label="@string/screen_add_record"
+            android:parentActivityName=".main.MainActivity"/>
 
         <activity android:name=".addrecord.DetaliiActivity"
+            android:label="@string/screen_add_record"
             android:parentActivityName=".addrecord.AdaugareActivity"/>
 
     </application>

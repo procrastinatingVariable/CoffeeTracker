@@ -20,7 +20,6 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -62,6 +61,8 @@ public class DetaliiActivity extends AppCompatActivity {
     private String oreDormite;
     private Boolean primul;
 
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,7 +102,6 @@ public class DetaliiActivity extends AppCompatActivity {
                 String userPhoneNumber = user.getPhoneNumber();
 
                 Bautura bautura = bauturiList.get(position);
-                Toast.makeText(getApplicationContext(), bautura.getDenumire() + " is selected!", Toast.LENGTH_SHORT).show();
                 Context context = DetaliiActivity.this;
 //                String key = mDatabase.child("records").child("+40727138440").push().getKey();
                 String key = mDatabase.child("records").child(userPhoneNumber).push().getKey();
@@ -112,9 +112,10 @@ public class DetaliiActivity extends AppCompatActivity {
 
                     AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
                     EditText inputOre = new EditText(context);
+                    inputOre.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
                     LinearLayout layout2 = new LinearLayout(context);
                     builder2.setTitle("Numărul de ore dormite");
-                    inputOre.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    inputOre.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
                     InputFilter[] FilterArray = new InputFilter[1];
                     FilterArray[0] = new InputFilter.LengthFilter(2);
                     inputOre.setFilters(FilterArray);
@@ -143,6 +144,7 @@ public class DetaliiActivity extends AppCompatActivity {
 
                             // Set up the input
                             final EditText inputCant = new EditText(context);
+                            inputCant.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
                             final EditText inputTime = new EditText(context);
 
                             LinearLayout layout = new LinearLayout(context);
@@ -153,10 +155,8 @@ public class DetaliiActivity extends AppCompatActivity {
 
                             inputCant.setLayoutParams(lp);
                             inputTime.setLayoutParams(lp);
-                            inputCant.setInputType(InputType.TYPE_CLASS_TEXT);
 
-                            Long tsLong = System.currentTimeMillis() / 1000;
-                            inputTime.setText(calculeazaTimp(tsLong));
+                            inputTime.setText(dateFormat.format(new Date()));
 
                             layout.addView(inputCant);
                             layout.addView(inputTime);
@@ -176,7 +176,7 @@ public class DetaliiActivity extends AppCompatActivity {
                                     timestamp = inputTime.getText().toString();
                                     long timestampValue;
                                     try {
-                                        timestampValue = (new SimpleDateFormat("dd/MM/yyyy HH:mm")).parse(timestamp).getTime();
+                                        timestampValue = dateFormat.parse(timestamp).getTime();
                                     } catch (ParseException e) {
                                         e.printStackTrace();
                                         timestampValue = new Date().getTime();
@@ -221,6 +221,7 @@ public class DetaliiActivity extends AppCompatActivity {
 
                     // Set up the input
                     final EditText inputCant = new EditText(context);
+                    inputCant.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
                     final EditText inputTime = new EditText(context);
 
                     LinearLayout layout = new LinearLayout(context);
@@ -231,10 +232,8 @@ public class DetaliiActivity extends AppCompatActivity {
 
                     inputCant.setLayoutParams(lp);
                     inputTime.setLayoutParams(lp);
-                    inputCant.setInputType(InputType.TYPE_CLASS_TEXT);
 
-                    Long tsLong = System.currentTimeMillis() / 1000;
-                    inputTime.setText(calculeazaTimp(tsLong));
+                    inputTime.setText(dateFormat.format(new Date()));
 
                     layout.addView(inputCant);
                     layout.addView(inputTime);
@@ -256,7 +255,7 @@ public class DetaliiActivity extends AppCompatActivity {
                             timestamp = inputTime.getText().toString();
                             long timestampValue;
                             try {
-                                timestampValue = (new SimpleDateFormat("dd/MM/yyyy HH:mm")).parse(timestamp).getTime();
+                                timestampValue = dateFormat.parse(timestamp).getTime();
                             } catch (ParseException e) {
                                 e.printStackTrace();
                                 timestampValue = new Date().getTime();

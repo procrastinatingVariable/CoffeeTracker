@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import ro.fmi.ip.trei.coffeetracker.R;
 
@@ -22,6 +21,7 @@ public class AdaugareActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addrecord);
+
         imageButtonCafea = findViewById(R.id.image_button_cafea);
         imageButtonCeai = findViewById(R.id.image_button_ceai);
         imageButtonCola = findViewById(R.id.image_button_cola);
@@ -29,7 +29,6 @@ public class AdaugareActivity extends AppCompatActivity {
         imageButtonCafea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(AdaugareActivity.this, "Cafea", Toast.LENGTH_LONG).show();
                 optiune = "cafea";
                 adaugaBautura(v);
             }
@@ -37,7 +36,6 @@ public class AdaugareActivity extends AppCompatActivity {
         imageButtonCeai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(AdaugareActivity.this, "Ceai", Toast.LENGTH_LONG).show();
                 optiune = "ceai";
                 adaugaBautura(v);
             }
@@ -45,7 +43,6 @@ public class AdaugareActivity extends AppCompatActivity {
         imageButtonCola.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(AdaugareActivity.this, "Cola", Toast.LENGTH_LONG).show();
                 optiune = "cola";
                 adaugaBautura(v);
             }

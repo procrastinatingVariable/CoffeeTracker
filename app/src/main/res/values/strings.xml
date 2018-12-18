@@ -42,5 +42,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_profile">Profile</string>
     <string name="title_records">Records</string>
+    <string name="screen_add_record">Add record</string>
 
 </resources>
