@@ -41,9 +41,10 @@ public class ModelMapper {
 
     public static Record map(RecordEntity record) {
         return new Record(
-                record.getName(),
-                record.getQuantity(),
-                new Date(record.getTimestamp()));
+                record.getDenumire(),
+                record.getDozaj(),
+                new Date(record.getTimestamp()),
+                record.getUrlImagine());
     }
 
     public static <T, MT> List<MT> mapList(List<T> list, Mapper<T, MT> mapper) {

@@ -16,6 +16,7 @@
             android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.ACTION_VIEW"/>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

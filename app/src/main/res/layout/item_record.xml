@@ -8,48 +8,52 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/coffee" />
+
         <TextView
             android:id="@+id/record_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/record_date"
+            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintTop_toTopOf="@+id/image"
+            tools:text="Espresso" />
 
         <TextView
             android:id="@+id/record_quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/record_name"
-            app:layout_constraintEnd_toStartOf="@+id/record_date"
-            app:layout_constraintTop_toTopOf="@+id/record_name" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/record_name"
+            app:layout_constraintTop_toBottomOf="@+id/record_name"
+            tools:text="20mg" />
 
         <TextView
             android:id="@+id/record_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/record_time" />
-
-        <TextView
-            android:id="@+id/record_time"
-            android:layout_width="wrap_content"
-            android:layout_height="19dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/record_date"
-            app:layout_constraintEnd_toEndOf="@+id/record_date"
-            app:layout_constraintStart_toStartOf="@+id/record_date"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="spread"
+            tools:text="21/09/2018" />
     </android.support.constraint.ConstraintLayout>
 
 </layout>

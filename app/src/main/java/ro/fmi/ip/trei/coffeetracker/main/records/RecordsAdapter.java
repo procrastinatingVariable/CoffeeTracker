@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,7 +69,8 @@ public class RecordsAdapter extends RecyclerView.Adapter<RecordsAdapter.RecordIt
             binding.recordName.setText(record.getName());
             binding.recordQuantity.setText(Double.toString(record.getQuantity()));
             binding.recordDate.setText(Formats.getDateFormat().format(record.getRegistrationDate()));
-            binding.recordTime.setText(Formats.getTimeFormat().format(record.getRegistrationDate()));
+            String imageUrl = record.getImageUrl();
+            Picasso.get().load(imageUrl).into(binding.image);
         }
     }
 }

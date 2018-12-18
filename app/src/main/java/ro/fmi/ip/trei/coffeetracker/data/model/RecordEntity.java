@@ -1,37 +1,37 @@
 package ro.fmi.ip.trei.coffeetracker.data.model;
 
-import java.util.Date;
-
 public class RecordEntity {
 
-    private String name;
-    private double quantity;
+    private String denumire;
+    private double dozaj;
     private long timestamp;
+    private String urlImagine;
 
     public RecordEntity() {
 
     }
 
-    public RecordEntity(String name, double quantity, long timestamp) {
-        this.name = name;
-        this.quantity = quantity;
+    public RecordEntity(String name, double quantity, long timestamp, String urlImage) {
+        this.denumire = name;
+        this.dozaj = quantity;
         this.timestamp = timestamp;
+        this.urlImagine = urlImage;
     }
 
-    public String getName() {
-        return name;
+    public String getDenumire() {
+        return denumire;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDenumire(String denumire) {
+        this.denumire = denumire;
     }
 
-    public double getQuantity() {
-        return quantity;
+    public double getDozaj() {
+        return dozaj;
     }
 
-    public void setQuantity(float quantity) {
-        this.quantity = quantity;
+    public void setDozaj(float dozaj) {
+        this.dozaj = dozaj;
     }
 
     public long getTimestamp() {
@@ -40,5 +40,13 @@ public class RecordEntity {
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getUrlImagine() {
+        return urlImagine;
+    }
+
+    public void setUrlImagine(String urlImagine) {
+        this.urlImagine = urlImagine;
     }
 }
