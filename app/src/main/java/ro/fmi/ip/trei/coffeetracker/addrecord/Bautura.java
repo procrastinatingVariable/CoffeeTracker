@@ -9,6 +9,7 @@ public class Bautura {
 
     private String denumire;
     private double dozaj;
+    private double cantitate;
     private String urlImagine;
     private long timestamp;
     private double oreDormite;
@@ -17,12 +18,13 @@ public class Bautura {
     public Bautura() {
     }
 
-    public Bautura(String denumire, double dozaj, String urlImagine, long oraInregistrare, double oreDormite) {
+    public Bautura(String denumire, double dozaj, double cantitate, String urlImagine, long oraInregistrare, double oreDormite) {
         this.denumire = denumire;
         this.dozaj = dozaj;
         this.urlImagine = urlImagine;
         this.oreDormite = oreDormite;
         this.timestamp = oraInregistrare;
+        this.cantitate = cantitate;
     }
 
     @Exclude
@@ -30,6 +32,7 @@ public class Bautura {
         HashMap<String, Object> result = new HashMap<>();
         result.put("denumire", denumire);
         result.put("dozaj", dozaj);
+        result.put("cantitate", cantitate);
         result.put("urlImagine", urlImagine);
         result.put("oreDormite", oreDormite);
         result.put("timestamp", timestamp);
@@ -74,5 +77,13 @@ public class Bautura {
 
     public long getTimestamp() {
         return this.timestamp;
+    }
+
+    public void setCantitate(double cantitate) {
+        this.cantitate = cantitate;
+    }
+
+    public double getCantitate() {
+        return this.cantitate;
     }
 }

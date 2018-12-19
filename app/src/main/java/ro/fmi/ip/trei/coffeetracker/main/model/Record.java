@@ -6,6 +6,7 @@ public class Record {
 
     private String name;
     private double quantity;
+    private double dosage;
     private Date registrationDate;
     private String imageUrl;
 
@@ -19,6 +20,11 @@ public class Record {
     public Record(String name, double quantity, Date registrationDate, String imageUrl) {
         this(name, quantity, registrationDate);
         this.imageUrl = imageUrl;
+    }
+
+    public Record(String name, double quantity, double dosage, Date registrationDate, String imageUrl) {
+        this(name, quantity, registrationDate, imageUrl);
+        this.dosage = dosage;
     }
 
     public String getName() {
@@ -51,5 +57,13 @@ public class Record {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public double getDosage() {
+        return dosage;
+    }
+
+    public void setDosage(double dosage) {
+        this.dosage = dosage;
     }
 }

@@ -181,7 +181,7 @@ public class DetaliiActivity extends AppCompatActivity {
                                         e.printStackTrace();
                                         timestampValue = new Date().getTime();
                                     }
-                                    bautura.setDozaj(Double.parseDouble(cantitate));
+                                    bautura.setCantitate(Double.parseDouble(cantitate));
                                     bautura.setTimestamp(timestampValue);
 
                                     Map<String, Object> messageValues = bautura.toMap();
@@ -260,7 +260,7 @@ public class DetaliiActivity extends AppCompatActivity {
                                 e.printStackTrace();
                                 timestampValue = new Date().getTime();
                             }
-                            bautura.setDozaj(Double.parseDouble(cantitate));
+                            bautura.setCantitate(Double.parseDouble(cantitate));
                             bautura.setTimestamp(timestampValue);
                             Map<String, Object> messageValues = bautura.toMap();
                             Map<String, Object> childUpdates = new HashMap<>();

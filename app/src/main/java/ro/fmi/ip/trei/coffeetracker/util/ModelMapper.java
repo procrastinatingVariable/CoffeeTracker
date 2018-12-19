@@ -43,6 +43,7 @@ public class ModelMapper {
         return new Record(
                 record.getDenumire(),
                 record.getDozaj(),
+                record.getCantitate(),
                 new Date(record.getTimestamp()),
                 record.getUrlImagine());
     }

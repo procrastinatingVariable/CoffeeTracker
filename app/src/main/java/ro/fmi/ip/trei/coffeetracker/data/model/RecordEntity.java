@@ -4,6 +4,7 @@ public class RecordEntity {
 
     private String denumire;
     private double dozaj;
+    private double cantitate;
     private long timestamp;
     private String urlImagine;
 
@@ -11,9 +12,10 @@ public class RecordEntity {
 
     }
 
-    public RecordEntity(String name, double quantity, long timestamp, String urlImage) {
+    public RecordEntity(String name, double dosage, double quantity, long timestamp, String urlImage) {
         this.denumire = name;
-        this.dozaj = quantity;
+        this.dozaj = dosage;
+        this.cantitate = quantity;
         this.timestamp = timestamp;
         this.urlImagine = urlImage;
     }
@@ -48,5 +50,13 @@ public class RecordEntity {
 
     public void setUrlImagine(String urlImagine) {
         this.urlImagine = urlImagine;
+    }
+
+    public double getCantitate() {
+        return cantitate;
+    }
+
+    public void setCantitate(double cantitate) {
+        this.cantitate = cantitate;
     }
 }

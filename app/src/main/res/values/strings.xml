@@ -44,4 +44,7 @@
     <string name="title_records">Records</string>
     <string name="screen_add_record">Add record</string>
 
+    <string name="header_caffeine_consumption">Caffeine consumption</string>
+    <string name="header_caffeine_prediction">Predictions</string>
+
 </resources>
