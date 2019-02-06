@@ -235,6 +235,9 @@ public class SizeSelector extends LinearLayout {
     }
 
     public int getSelectedAmount() {
+        if (lastSelectedButton == null) {
+            return 0;
+        }
         View button = lastSelectedButton;
         String tag = (String)lastSelectedButton.getTag();
         int selectedAmount = 0;

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ro.fmi.ip.trei.coffeetracker.R;
@@ -22,12 +23,17 @@ class BeverageAdapter extends RecyclerView.Adapter<BeverageAdapter.ViewHolder> {
     private Beverage selectedBeverage;
     private ViewHolder lastSelected;
 
+    public BeverageAdapter() {
+        this.data = new ArrayList<>();
+    }
+
     public BeverageAdapter(List<Beverage> data) {
         this.data = data;
     }
 
     public void setData(List<Beverage> data){
         this.data = data;
+        notifyDataSetChanged();
     }
 
     @NonNull

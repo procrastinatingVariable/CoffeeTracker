@@ -12,11 +12,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import ro.fmi.ip.trei.coffeetracker.R;
 import ro.fmi.ip.trei.coffeetracker.addrecord.model.Beverage;
+import ro.fmi.ip.trei.coffeetracker.data.callbacks.GetBeverageCallback;
+import ro.fmi.ip.trei.coffeetracker.data.firebase.FirebaseBeverageHelper;
+import ro.fmi.ip.trei.coffeetracker.data.model.BeverageEntity;
 import ro.fmi.ip.trei.coffeetracker.databinding.FragmentBeverageListBinding;
+import ro.fmi.ip.trei.coffeetracker.util.ModelMapper;
 
 public class BeverageListFragment extends Fragment {
 
@@ -54,41 +60,51 @@ public class BeverageListFragment extends Fragment {
     }
     
     private void populateBasedOnType() {
+        listAdapter = new BeverageAdapter();
         switch (type) {
             case COFFEE:
-                listAdapter = new BeverageAdapter(Arrays.asList(
-                        new Beverage("https://bit.ly/2pzCPjo", "Americano", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Americano", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Americano", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Americano", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Americano", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Americano", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Americano", 20)
-                ));
+                FirebaseBeverageHelper.getInstance().getCoffeeRecords(new GetBeverageCallback() {
+                    @Override
+                    public void onResult(List<BeverageEntity> beverages) {
+                        List<Beverage> data = ModelMapper.mapList(beverages, value -> new Beverage(value.getImageUrl(), value.getName(), value.getConcentration()));
+                        listAdapter.setData(data);
+                    }
+
+                    @Override
+                    public void onFailure() {
+
+                    }
+                });
                 break;
                 
             case TEA:
-                listAdapter = new BeverageAdapter(Arrays.asList(
-                        new Beverage("https://bit.ly/2pzCPjo", "Black Tea", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Black Tea", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Black Tea", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Black Tea", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Black Tea", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Black Tea", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Black Tea", 20)
-                ));
+                FirebaseBeverageHelper.getInstance().getTeaRecords(new GetBeverageCallback() {
+                    @Override
+                    public void onResult(List<BeverageEntity> beverages) {
+                        List<Beverage> data = ModelMapper.mapList(beverages, value -> new Beverage(value.getImageUrl(), value.getName(), value.getConcentration()));
+                        listAdapter.setData(data);
+                    }
+
+                    @Override
+                    public void onFailure() {
+
+                    }
+                });
                 break;
                 
             case SOFT_DRINK:
-                listAdapter = new BeverageAdapter(Arrays.asList(
-                        new Beverage("https://bit.ly/2pzCPjo", "Coca Cola", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Coca Cola", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Coca Cola", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Coca Cola", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Coca Cola", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Coca Cola", 20),
-                        new Beverage("https://bit.ly/2pzCPjo", "Coca Cola", 20)
-                ));
+                FirebaseBeverageHelper.getInstance().getSoftDrinkRecords(new GetBeverageCallback() {
+                    @Override
+                    public void onResult(List<BeverageEntity> beverages) {
+                        List<Beverage> data = ModelMapper.mapList(beverages, value -> new Beverage(value.getImageUrl(), value.getName(), value.getConcentration()));
+                        listAdapter.setData(data);
+                    }
+
+                    @Override
+                    public void onFailure() {
+
+                    }
+                });
                 break;
         }
     }
