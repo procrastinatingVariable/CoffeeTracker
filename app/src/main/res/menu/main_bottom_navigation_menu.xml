@@ -4,17 +4,12 @@
 
     <item
         android:id="@+id/tab_dashboard"
-        android:title="@string/tab_dashboard"
-        android:icon="@drawable/ic_dashboard"/>
+        android:title=""
+        android:icon="@drawable/ic_home"/>
 
     <item
         android:id="@+id/tab_records"
-        android:title="@string/tab_records"
-        android:icon="@drawable/ic_records"/>
-
-    <item
-        android:id="@+id/tab_profile"
-        android:title="@string/tab_profile"
-        android:icon="@drawable/ic_profile"/>
+        android:title=""
+        android:icon="@drawable/ic_bar_chart"/>
 
 </menu>

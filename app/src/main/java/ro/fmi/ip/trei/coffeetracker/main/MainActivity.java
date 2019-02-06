@@ -23,7 +23,6 @@ import ro.fmi.ip.trei.coffeetracker.R;
 import ro.fmi.ip.trei.coffeetracker.common.BaseActivity;
 import ro.fmi.ip.trei.coffeetracker.databinding.ActivityMainBinding;
 import ro.fmi.ip.trei.coffeetracker.main.dashboard.DashboardFragment;
-import ro.fmi.ip.trei.coffeetracker.main.profile.ProfileFragment;
 import ro.fmi.ip.trei.coffeetracker.main.records.RecordsFragment;
 import ro.fmi.ip.trei.coffeetracker.pvt.PvtActivity;
 
@@ -156,8 +155,6 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
             return BACKSTACK_DASHBOARD;
         } else if (fragment instanceof RecordsFragment) {
             return BACKSTACK_RECORDS;
-        } else if (fragment instanceof ProfileFragment) {
-            return BACKSTACK_PROFILE;
         } else {
             return BACKSTACK_UNKNOWN;
         }
@@ -195,10 +192,6 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
         switch (entryName) {
             case BACKSTACK_DASHBOARD:
                 selectedItemId = R.id.tab_dashboard;
-                break;
-
-            case BACKSTACK_PROFILE:
-                selectedItemId = R.id.tab_profile;
                 break;
 
             case BACKSTACK_RECORDS:
@@ -242,10 +235,6 @@ public class MainActivity extends BaseActivity implements FragmentManager.OnBack
         switch(itemId) {
             case R.id.tab_dashboard:
                 fragment = new DashboardFragment();
-                break;
-
-            case R.id.tab_profile:
-                fragment = new ProfileFragment();
                 break;
 
             case R.id.tab_records:
