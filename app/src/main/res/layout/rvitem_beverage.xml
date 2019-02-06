@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <RelativeLayout
+        android:id="@+id/namePlate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rvitem_beverage_nameplate_unselected"
+        android:elevation="6dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/imageWrapper"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:maxLength="15"
+            android:maxLines="1"
+            android:textColor="@android:color/white"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/nameplate_text_size"
+            tools:text="Americano" />
+
+        <TextView
+            android:id="@+id/concentration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/unit"
+            android:maxLength="4"
+            android:maxLines="1"
+            android:textColor="@android:color/white"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/nameplate_text_size"
+            tools:text="20" />
+
+        <TextView
+            android:id="@+id/unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="3dp"
+            android:text="@string/label_unit_mg"
+            android:textColor="@android:color/white"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/nameplate_text_size" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/imageWrapper"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardCornerRadius="@dimen/radius_card"
+        app:cardElevation="0dp"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:cardCornerRadius="16dp">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@drawable/coffee_placeholder" />
+
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

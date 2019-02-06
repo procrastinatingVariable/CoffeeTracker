@@ -1,5 +1,6 @@
 package ro.fmi.ip.trei.coffeetracker.entry.signup;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
@@ -16,7 +17,6 @@ public class FillProfileViewModel extends ViewModel {
     public final MutableLiveData<String> firstName = new MutableLiveData<>();
     public final MutableLiveData<String> lastName = new MutableLiveData<>();
     public final MutableLiveData<String> birthDate = new MutableLiveData<>();
-
 
     public FillProfileViewModel(EntryViewModel viewModel) {
         this.flowViewModel = viewModel;

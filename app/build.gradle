@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "ro.fmi.ip.trei.coffeetracker"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -63,6 +63,7 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 
     implementation 'com.google.firebase:firebase-ml-model-interpreter:16.2.4'
+    implementation 'com.android.support:cardview-v7:28.0.0'
 
 }
 

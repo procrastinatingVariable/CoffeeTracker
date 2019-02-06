@@ -46,5 +46,23 @@
 
     <string name="header_caffeine_consumption">Caffeine consumption</string>
     <string name="header_caffeine_prediction">Predictions</string>
+    <string name="label_size">Size</string>
+    <string name="label_date">Date</string>
+    <string name="label_time">Time</string>
+    <string name="size_small_label">Small</string>
+    <string name="size_small_amount">100ml</string>
+    <string name="size_medium_label">Medium</string>
+    <string name="size_medium_amount">200ml</string>
+    <string name="size_large_label">Large</string>
+    <string name="size_large_amount">400ml</string>
+    <string name="label_unit_ml">ml</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_record_title">Select your beverage</string>
+    <string name="label_unit_mg">mg</string>
+    <string name="add_record_confirm">Confirm</string>
+    <string name="error_beverage_not_selected">No beverage selected</string>
+    <string name="error_amount_not_selected">Amount not selected.</string>
 
 </resources>

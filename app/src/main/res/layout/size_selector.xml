@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:baselineAligned="false"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
+
+    <RelativeLayout
+        android:id="@+id/button_size_small"
+        android:tag="small"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/size_selector_left_unselected">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/button_size_small_label_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/size_small_label"
+                android:textSize="@dimen/size_selector_size_label"
+                android:textColor="@android:color/black"
+                tools:text="Small"/>
+
+            <TextView
+                android:id="@+id/button_size_small_label_amount"
+                android:tag="amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/size_small_amount"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/size_selector_size_amount"
+                tools:text="100ml"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/button_size_medium"
+        android:tag="medium"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/size_selector_middle_unselected">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/button_size_medium_label_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/size_medium_label"
+                android:textSize="@dimen/size_selector_size_label"
+                android:textColor="@android:color/black"
+                tools:text="Medium"/>
+
+            <TextView
+                android:id="@+id/button_size_medium_label_amount"
+                android:tag="amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/size_medium_amount"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/size_selector_size_amount"
+                tools:text="200ml"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/button_size_large"
+        android:tag="large"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/size_selector_middle_unselected">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/button_size_large_label_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/size_large_label"
+                android:textSize="@dimen/size_selector_size_label"
+                android:textColor="@android:color/black"
+                tools:text="Large"/>
+
+            <TextView
+                android:id="@+id/button_size_large_label_amount"
+                android:tag="amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/size_large_amount"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/size_selector_size_amount"
+                tools:text="400ml"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/button_size_custom"
+        android:tag="custom"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/size_selector_right_unselected">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <ro.fmi.ip.trei.coffeetracker.ui.customview.UntouchableEditText
+                android:id="@+id/button_size_custom_edit"
+                android:tag="amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="2"
+                android:backgroundTint="@android:color/black"
+                android:maxLines="1"
+                android:inputType="number"
+                android:textSize="@dimen/size_selector_size_label" />
+
+            <TextView
+                android:id="@+id/button_size_custom_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_unit_ml"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/size_selector_size_amount"
+                tools:text="ml" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

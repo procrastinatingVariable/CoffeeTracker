@@ -35,7 +35,7 @@ import java.util.List;
 
 import ro.fmi.ip.trei.coffeetracker.CoffeeTracker;
 import ro.fmi.ip.trei.coffeetracker.R;
-import ro.fmi.ip.trei.coffeetracker.addrecord.AdaugareActivity;
+import ro.fmi.ip.trei.coffeetracker.addrecord.AddRecordActivity;
 import ro.fmi.ip.trei.coffeetracker.databinding.FragmentDashboardBinding;
 import ro.fmi.ip.trei.coffeetracker.entry.model.Formats;
 import ro.fmi.ip.trei.coffeetracker.main.model.Record;
@@ -86,7 +86,7 @@ public class DashboardFragment extends Fragment {
         this.viewModel = ViewModelProviders.of(this).get(DashboardViewModel.class);
 
         binding.fab.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), AdaugareActivity.class);
+            Intent intent = new Intent(getContext(), AddRecordActivity.class);
             startActivity(intent);
         });
 
