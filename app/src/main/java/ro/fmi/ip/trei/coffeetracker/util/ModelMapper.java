@@ -48,6 +48,7 @@ public class ModelMapper {
                 record.getUrlImagine());
     }
 
+
     public static <T, MT> List<MT> mapList(List<T> list, Mapper<T, MT> mapper) {
         List<MT> mappedList = new ArrayList<>();
         for (T item : list) {

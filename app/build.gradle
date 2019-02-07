@@ -50,7 +50,7 @@ dependencies {
 
     implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
 
-    implementation "com.google.firebase:firebase-database:16.0.5"
+    implementation "com.google.firebase:firebase-database:16.0.6"
 
     implementation 'com.hbb20:ccp:2.2.3'
 

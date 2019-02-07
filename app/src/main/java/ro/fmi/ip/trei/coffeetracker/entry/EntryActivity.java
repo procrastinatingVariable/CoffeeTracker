@@ -14,7 +14,6 @@ import ro.fmi.ip.trei.coffeetracker.common.BaseActivity;
 import ro.fmi.ip.trei.coffeetracker.databinding.ActivityEntryBinding;
 import ro.fmi.ip.trei.coffeetracker.entry.signin.OtpFragment;
 import ro.fmi.ip.trei.coffeetracker.entry.signin.PhoneInsertFragment;
-import ro.fmi.ip.trei.coffeetracker.entry.signup.FillProfileFragment;
 import ro.fmi.ip.trei.coffeetracker.main.MainActivity;
 
 public class EntryActivity extends BaseActivity {
@@ -115,10 +114,6 @@ public class EntryActivity extends BaseActivity {
 
             case EntryViewModel.STEP_OTP:
                 fragment = new OtpFragment();
-                break;
-
-            case EntryViewModel.STEP_PROFILE:
-                fragment = new FillProfileFragment();
                 break;
 
             default:

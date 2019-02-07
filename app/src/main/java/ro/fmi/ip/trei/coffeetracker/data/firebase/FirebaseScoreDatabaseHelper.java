@@ -12,27 +12,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ro.fmi.ip.trei.coffeetracker.data.callbacks.GetRecordsCallback;
-import ro.fmi.ip.trei.coffeetracker.data.model.RecordEntity;
+import ro.fmi.ip.trei.coffeetracker.data.callbacks.GetScoresCallback;
+import ro.fmi.ip.trei.coffeetracker.data.model.ScoreEntity;
 
-public class FirebaseRecordDatabaseHelper {
+public class FirebaseScoreDatabaseHelper {
 
-    private static volatile FirebaseRecordDatabaseHelper instance = null;
+    private static volatile FirebaseScoreDatabaseHelper instance = null;
 
 
     private DatabaseReference databaseReference;
 
 
-    private FirebaseRecordDatabaseHelper() {
+    private FirebaseScoreDatabaseHelper() {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        databaseReference = db.getReference("records");
+        databaseReference = db.getReference("scores");
     }
 
 
-    public static FirebaseRecordDatabaseHelper getInstance() {
+    public static FirebaseScoreDatabaseHelper getInstance() {
         if (instance == null) {
-            synchronized (FirebaseRecordDatabaseHelper.class) {
+            synchronized (FirebaseScoreDatabaseHelper.class) {
                 if (instance == null) {
-                    instance = new FirebaseRecordDatabaseHelper();
+                    instance = new FirebaseScoreDatabaseHelper();
                 }
             }
         }
@@ -40,20 +41,19 @@ public class FirebaseRecordDatabaseHelper {
         return instance;
     }
 
-
-    public void getRecords(String phoneNumber, GetRecordsCallback callback) {
+    public void getScores(String phoneNumber, GetScoresCallback callback) {
         DatabaseReference user = databaseReference.child(phoneNumber);
         user.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Iterable<DataSnapshot> records = dataSnapshot.getChildren();
-                List<RecordEntity> recordList = new ArrayList<>();
+                List<ScoreEntity> scoreEntity = new ArrayList<>();
                 for (DataSnapshot record : records) {
-                    RecordEntity r = record.getValue(RecordEntity.class);
-                    recordList.add(r);
+                    ScoreEntity r = record.getValue(ScoreEntity.class);
+                    scoreEntity.add(r);
                 }
 
-                callback.onResult(recordList);
+                callback.onResult(scoreEntity);
             }
 
             @Override
@@ -63,12 +63,10 @@ public class FirebaseRecordDatabaseHelper {
         });
     }
 
-    public void addRecord(String phoneNumber, RecordEntity record) {
-        DatabaseReference user = databaseReference.child(phoneNumber);
-        DatabaseReference recordReference = user.push();
-        recordReference.setValue(record);
-
+    public void addScore(String phoneNumber, ScoreEntity scoreEntity) {
+        DatabaseReference referenceForPhoneNumber = databaseReference.child(phoneNumber);
+        DatabaseReference referenceForEntry = referenceForPhoneNumber.push();
+        referenceForEntry.setValue(scoreEntity);
     }
-
 
 }

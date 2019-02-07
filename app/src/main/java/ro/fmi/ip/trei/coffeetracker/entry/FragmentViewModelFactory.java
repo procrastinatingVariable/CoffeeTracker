@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentActivity;
 
 import ro.fmi.ip.trei.coffeetracker.entry.signin.OtpViewModel;
 import ro.fmi.ip.trei.coffeetracker.entry.signin.PhoneInsertViewModel;
-import ro.fmi.ip.trei.coffeetracker.entry.signup.FillProfileViewModel;
 
 public class FragmentViewModelFactory implements ViewModelProvider.Factory {
 
@@ -26,8 +25,6 @@ public class FragmentViewModelFactory implements ViewModelProvider.Factory {
             return (T) new PhoneInsertViewModel(flowViewModel);
         } else if (modelClass.isAssignableFrom(OtpViewModel.class)) {
             return (T) new OtpViewModel(flowViewModel);
-        } else if (modelClass.isAssignableFrom(FillProfileViewModel.class)) {
-            return (T) new FillProfileViewModel(flowViewModel);
         }
 
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());

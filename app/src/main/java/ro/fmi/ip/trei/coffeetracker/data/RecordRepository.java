@@ -1,9 +1,5 @@
 package ro.fmi.ip.trei.coffeetracker.data;
 
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import ro.fmi.ip.trei.coffeetracker.data.callbacks.GetRecordsCallback;

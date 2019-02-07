@@ -9,6 +9,7 @@ import android.util.Log;
 import ro.fmi.ip.trei.coffeetracker.R;
 import ro.fmi.ip.trei.coffeetracker.common.BaseActivity;
 import ro.fmi.ip.trei.coffeetracker.entry.EntryActivity;
+import ro.fmi.ip.trei.coffeetracker.entry.LoginActivity;
 import ro.fmi.ip.trei.coffeetracker.main.MainActivity;
 
 public class SplashActivity extends BaseActivity {
@@ -53,7 +54,7 @@ public class SplashActivity extends BaseActivity {
         Intent intent = new Intent();
         switch(screenId) {
             case SplashActivityViewModel.SCREEN_ENTRY:
-                intent.setClass(this, EntryActivity.class);
+                intent.setClass(this, LoginActivity.class);
                 break;
 
             case SplashActivityViewModel.SCREEN_MAIN:

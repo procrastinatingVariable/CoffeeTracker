@@ -31,10 +31,10 @@ public class AddRecordActivity extends BaseActivity implements
         TimePickerDialog.OnTimeSetListener,
         DatePickerDialog.OnDateSetListener {
 
-    private static final int RESULT_CODE = 1;
-    private static final String RESULT_KEY_BEVERAGE = "beverage";
-    private static final String RESULT_KEY_TIMESTAMP = "timestamp";
-    private static final String RESULT_KEY_AMOUNT = "amount";
+    public static final int RESULT_CODE = 1;
+    public static final String RESULT_KEY_BEVERAGE = "beverage";
+    public static final String RESULT_KEY_TIMESTAMP = "timestamp";
+    public static final String RESULT_KEY_AMOUNT = "amount";
 
     private DialogFragment timePicker;
     private DialogFragment datePicker;
